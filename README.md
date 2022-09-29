@@ -32,6 +32,14 @@
 
 ----
 
+## Installation
+
+First, install [Rust](https://www.rust-lang.org/tools/install) (using the recommended rustup installation method) and then
+
+```
+cargo install spotify-tui
+```
+
 ## Configuration
 
 osintui expects a TOML configuration file stored at `~/.osintui/config/config.toml` that sets the necessary API tokens for each support service. The configuration file will be created for you on first run if one was not found.
@@ -42,6 +50,19 @@ virustotal = "api_key"
 shodan = "api_key"
 ```
 
+## Hotkeys
+
+| Key         | Description |
+| ----------- | ----------- |
+| h           | Home        |
+| /           | Input       |
+| q           | Back        |
+| s           | Shodan      |
+| v           | VirusToal   |
+| →           | Move Right  |
+| ←           | Move Left   |
+| ↑           | Move Up     |
+| ↓           | Move Down   |
 
 ## Credits
 
