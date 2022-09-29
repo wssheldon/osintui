@@ -1,6 +1,8 @@
 [package]
 name = "osintui"
 version = "0.1.0"
+license = "MIT"
+description = "Open Source Intelligence Terminal User Interface"
 edition = "2021"
 
 [dependencies]
