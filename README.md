@@ -36,7 +36,7 @@
 
 ⭐ **[spotify-tui](https://github.com/Rigellute/spotify-tui)**
 
-The software architecture is almost entirely modelede after spotify-tui. The codebase was invaluable in learning how to cleanly manage complex TUI state and implement generic handling of TUI components.
+The software architecture is almost entirely modeled after spotify-tui. The codebase was invaluable in learning how to cleanly manage complex TUI state and implement generic handling of TUI components.
 
 ⭐ [wtfis](https://github.com/pirxthepilot/wtfis)
 
