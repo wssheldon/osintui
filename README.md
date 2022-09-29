@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="https://avatars.githubusercontent.com/u/13785584?s=280&v=4" alt="logo" width="200" height="auto" />
   <h1>osintui</h1>
   <p> Open Source Intelligence Terminal User Interface </p>
   <!-- Badges -->
@@ -31,6 +30,18 @@
   <img src="assets/demo.gif" alt="screenshot" />
 </div>
 
+----
+
+## Configuration
+
+osintui expects a TOML configuration file stored at `~/.osintui/config/config.toml` that sets the necessary API tokens for each support service. The configuration file will be created for you on first run if one was not found.
+
+```toml
+[keys]
+virustotal = "api_key"
+shodan = "api_key"
+```
+
 
 ## Credits
 
@@ -38,6 +49,6 @@
 
 The software architecture is almost entirely modeled after spotify-tui. The codebase was invaluable in learning how to cleanly manage complex TUI state and implement generic handling of TUI components.
 
-⭐ [wtfis](https://github.com/pirxthepilot/wtfis)
+⭐ **[wtfis](https://github.com/pirxthepilot/wtfis)**
 
 I needed a good first project to learn rust and wtfis was the primary source of inspiration for osintui.

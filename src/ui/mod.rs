@@ -118,8 +118,8 @@ where
         .direction(Direction::Horizontal)
         .constraints(
             [
-                Constraint::Percentage(60),
-                Constraint::Percentage(20),
+                Constraint::Percentage(50),
+                Constraint::Percentage(30),
                 Constraint::Percentage(20),
             ]
             .as_ref(),
