@@ -1,0 +1,4 @@
+edition = "2021"
+newline_style = "unix"
+reorder_imports = true
+tab_spaces = 4

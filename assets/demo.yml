@@ -1,0 +1,525 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /Users/will/Projects/osintui
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 245
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 55
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 230
+    content: "\e[2J"
+  - delay: 17
+    content: "\e[3;3H┌\e[38;5;7mSearch\e[39m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[38;5;15m┌Menu──────────────────────────────────────────┐\e[38;5;7m┌Status─────────────────────────────────────────┐\e[4;3H\e[39m│\e[4;146H│\e[38;5;15m│ \e[4m\e[38;5;3mH\e[24mome\e[38;5;15m | \e[4m\e[38;5;3mS\e[24m\e[38;5;15mhodan | \e[4m\e[38;5;3mV\e[24m\e[38;5;15mirusTotal | \e[4m\e[38;5;3mQ\e[24m\e[38;5;15muit            │\e[38;5;7m│Waiting for input...                           │\e[5;3H\e[39m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[38;5;15m└──────────────────────────────────────────────┘\e[38;5;7m└───────────────────────────────────────────────┘\e[6;3H\e[38;5;11m┌Welcome!──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[38;5;15m┌Integrations───────────────────────────────────┐\e[7;3H\e[38;5;11m│\e[7;194H│\e[38;5;15m│                                               │\e[8;3H\e[38;5;11m│\e[8;5H\e[38;5;9m                                                                                                                                                                                            \e[8;194H\e[38;5;11m│\e[38;5;15m│ ✅\e[8;199H Shodan                                     │\e[9;3H\e[38;5;11m│\e[9;5H\e[38;5;9m                                                                                           _       __        _                                                                              \e[9;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[10;3H\e[38;5;11m│\e[10;5H\e[38;5;9m                                                                               ____  _____(_)___  / /___  __(_)                                                                             \e[10;194H\e[38;5;11m│\e[38;5;15m│ ✅\e[10;199H Virustotal                                 │\e[11;3H\e[38;5;11m│\e[11;5H\e[38;5;9m                                                                              / __ \\/ ___/ / __ \\/ __/ / / / /                                                                              \e[11;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[12;3H\e[38;5;11m│\e[12;5H\e[38;5;9m                                                                             / /_/ (__  ) / / / / /_/ /_/ / /                                                                               \e[12;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[13;3H\e[38;5;11m│\e[13;5H\e[38;5;9m                                                                             \\____/____/_/_/ /_/\\__/\\__,_/_/                                                                                \e[13;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[14;3H\e[38;5;11m│\e[14;5H\e[38;5;9m                                                                                                                                                                                            \e[14;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[15;3H\e[38;5;11m│\e[15;194H│\e[38;5;15m│                                               │\e[16;3H\e[38;5;11m│\e[16;93H\e[39m'/'\e[16;97Hto\e[16;100Hsearch\e[16;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[17;3H\e[38;5;11m│\e[17;89H\e[39m's'\e[17;93Hto\e[17;96Haccess\e[17;103Hshodan\e[17;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[18;3H\e[38;5;11m│\e[18;87H\e[39m'v'\e[18;91Hto\e[18;94Haccess\e[18;101Hvirustotal\e[18;194H\e[38;5;11m│\e[38;5;15m│                                               │\e[19;3H\e[38;5;11m│\e[19;194H│\e[38;5;15m│                                               │\e[20;3H\e[38;5;11m│\e[20;194H│\e[38;5;15m│                                               │\e[21;3H\e[38;5;11m│\e[21;194H│\e[38;5;15m│                                               │\e[22;3H\e[38;5;11m│\e[22;194H│\e[38;5;15m│                                               │\e[23;3H\e[38;5;11m│\e[23;194H│\e[38;5;15m│                                               │\e[24;3H\e[38;5;11m│\e[24;194H│\e[38;5;15m│                                               │\e[25;3H\e[38;5;11m│\e[25;194H│\e[38;5;15m│                                               │\e[26;3H\e[38;5;11m│\e[26;194H│\e[38;5;15m│                                               │\e[27;3H\e[38;5;11m│\e[27;194H│\e[38;5;15m│                                               │\e[28;3H\e[38;5;11m│\e[28;194H│\e[38;5;15m│                                               │\e[29;3H\e[38;5;11m│\e[29;194H│\e[38;5;15m│                                               │\e[30;3H\e[38;5;11m│\e[30;194H│\e[38;5;15m│                                               │\e[31;3H\e[38;5;11m│\e[31;194H│\e[38;5;15m│                                               │\e[32;3H\e[38;5;11m│\e[32;194H│\e[38;5;15m│                                               │\e[33;3H\e[38;5;11m│\e[33;194H│\e[38;5;15m│                                               │\e[34;3H\e[38;5;11m│\e[34;194H│\e[38;5;15m│                                               │\e[35;3H\e[38;5;11m│\e[35;194H│\e[38;5;15m│                                               │\e[36;3H\e[38;5;11m│\e[36;194H│\e[38;5;15m│                                               │\e[37;3H\e[38;5;11m│\e[37;194H│\e[38;5;15m│                                               │\e[38;3H\e[38;5;11m│\e[38;194H│\e[38;5;15m│                                               │\e[39;3H\e[38;5;11m│\e[39;194H│\e[38;5;15m│                                               │\e[40;3H\e[38;5;11m│\e[40;194H│\e[38;5;15m│                                               │\e[41;3H\e[38;5;11m│\e[41;194H│\e[38;5;15m│                                               │\e[42;3H\e[38;5;11m│\e[42;194H│\e[38;5;15m│                                               │\e[43;3H\e[38;5;11m│\e[43;194H│\e[38;5;15m│                                               │\e[44;3H\e[38;5;11m│\e[44;194H│\e[38;5;15m│                                               │\e[45;3H\e[38;5;11m│\e[45;194H│\e[38;5;15m│                                               │\e[46;3H\e[38;5;11m│\e[46;194H│\e[38;5;15m│                                               │\e[47;3H\e[38;5;11m│\e[47;194H│\e[38;5;15m│                                               │\e[48;3H\e[38;5;11m│\e[48;194H│\e[38;5;15m│                                               │\e[49;3H\e[38;5;11m│\e[49;194H│\e[38;5;15m│                                               │\e[50;3H\e[38;5;11m│\e[50;194H│\e[38;5;15m│                                               │\e[51;3H\e[38;5;11m│\e[51;194H│\e[38;5;15m│                                               │\e[52;3H\e[38;5;11m│\e[52;194H│\e[38;5;15m│                                               │\e[53;3H\e[38;5;11m└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[38;5;15m└───────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 89
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 98
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;4H"
+  - delay: 98
+    content: "\e[3;4H\e[38;5;11mSearch\e[6;3H\e[38;5;7m┌Welcome!──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[7;3H│\e[7;194H│\e[8;3H│\e[8;194H│\e[9;3H│\e[9;194H│\e[10;3H│\e[10;194H│\e[11;3H│\e[11;194H│\e[12;3H│\e[12;194H│\e[13;3H│\e[13;194H│\e[14;3H│\e[14;194H│\e[15;3H│\e[15;194H│\e[16;3H│\e[16;194H│\e[17;3H│\e[17;194H│\e[18;3H│\e[18;194H│\e[19;3H│\e[19;194H│\e[20;3H│\e[20;194H│\e[21;3H│\e[21;194H│\e[22;3H│\e[22;194H│\e[23;3H│\e[23;194H│\e[24;3H│\e[24;194H│\e[25;3H│\e[25;194H│\e[26;3H│\e[26;194H│\e[27;3H│\e[27;194H│\e[28;3H│\e[28;194H│\e[29;3H│\e[29;194H│\e[30;3H│\e[30;194H│\e[31;3H│\e[31;194H│\e[32;3H│\e[32;194H│\e[33;3H│\e[33;194H│\e[34;3H│\e[34;194H│\e[35;3H│\e[35;194H│\e[36;3H│\e[36;194H│\e[37;3H│\e[37;194H│\e[38;3H│\e[38;194H│\e[39;3H│\e[39;194H│\e[40;3H│\e[40;194H│\e[41;3H│\e[41;194H│\e[42;3H│\e[42;194H│\e[43;3H│\e[43;194H│\e[44;3H│\e[44;194H│\e[45;3H│\e[45;194H│\e[46;3H│\e[46;194H│\e[47;3H│\e[47;194H│\e[48;3H│\e[48;194H│\e[49;3H│\e[49;194H│\e[50;3H│\e[50;194H│\e[51;3H│\e[51;194H│\e[52;3H│\e[52;194H│\e[53;3H└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 12
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 85
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 95
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 98
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 104
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 104
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 97
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 90
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;4H"
+  - delay: 13
+    content: "\e[4;4H1\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;5H"
+  - delay: 12
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;5H"
+  - delay: 10
+    content: "\e[4;5H3\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;6H"
+  - delay: 9
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;6H"
+  - delay: 9
+    content: "\e[4;6H.\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;7H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;7H"
+  - delay: 8
+    content: "\e[4;7H1\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;8H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;8H"
+  - delay: 9
+    content: "\e[4;8H0\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;9H"
+  - delay: 9
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;9H"
+  - delay: 8
+    content: "\e[4;9H7\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;10H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;10H"
+  - delay: 8
+    content: "\e[4;10H.\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;11H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;11H"
+  - delay: 8
+    content: "\e[4;11H4\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;12H"
+  - delay: 9
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;12H"
+  - delay: 9
+    content: "\e[4;12H.\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;13H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;13H"
+  - delay: 8
+    content: "\e[4;13H5\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;14H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;14H"
+  - delay: 8
+    content: "\e[4;14H2\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;15H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;15H"
+  - delay: 9
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;15H"
+  - delay: 9
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25h\e[4;15H"
+  - delay: 8
+    content: "\e[3;4H\e[38;5;7mSearch\e[3;195H\e[38;5;3m┌Status─────────────────────────────────────────┐\e[4;195H│Loading...                                     │\e[5;195H└───────────────────────────────────────────────┘\e[6;3H\e[38;5;15m┌Home────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\e[7;3H│                                                                                                                                                                                                \e[8;3H│                                                                                                               Lookup complete!                                                                 \e[8;197H  \e[8;200H      \e[9;3H│                                                                                                                                                                                                \e[10;3H│                                                                                                                 '/' to search                                                                  \e[10;197H  \e[10;200H          \e[11;3H│                                                                                                             's' to access shodan                                                               \e[12;3H│                                                                                                           'v' to access virustotal                                                             \e[13;3H│                                                                                                                   \e[38;5;9mwtfis-rs\e[38;5;15m                                                                     \e[14;3H│                                                                                                                                                                                                \e[15;3H│                                                                                                                                                                                                \e[16;3H│                                                                                                                                                                                                \e[17;3H│                                                                                                                                                                                                \e[18;3H│                                                                                                                                                                                                \e[19;3H│                                                                                                                                                                                                \e[20;3H│                                                                                                                                                                                                \e[21;3H│                                                                                                                                                                                                \e[22;3H│                                                                                                                                                                                                \e[23;3H│                                                                                                                                                                                                \e[24;3H│                                                                                                                                                                                                \e[25;3H│                                                                                                                                                                                                \e[26;3H│                                                                                                                                                                                                \e[27;3H│                                                                                                                                                                                                \e[28;3H│                                                                                                                                                                                                \e[29;3H│                                                                                                                                                                                                \e[30;3H│                                                                                                                                                                                                \e[31;3H│                                                                                                                                                                                                \e[32;3H│                                                                                                                                                                                                \e[33;3H│                                                                                                                                                                                                \e[34;3H│                                                                                                                                                                                                \e[35;3H│                                                                                                                                                                                                \e[36;3H│                                                                                                                                                                                                \e[37;3H│                                                                                                                                                                                                \e[38;3H│                                                                                                                                                                                                \e[39;3H│                                                                                                                                                                                                \e[40;3H│                                                                                                                                                                                                \e[41;3H│                                                                                                                                                                                                \e[42;3H│                                                                                                                                                                                                \e[43;3H│                                                                                                                                                                                                \e[44;3H│                                                                                                                                                                                                \e[45;3H│                                                                                                                                                                                                \e[46;3H│                                                                                                                                                                                                \e[47;3H│                                                                                                                                                                                                \e[48;3H│                                                                                                                                                                                                \e[49;3H│                                                                                                                                                                                                \e[50;3H│                                                                                                                                                                                                \e[51;3H│                                                                                                                                                                                                \e[52;3H│                                                                                                                                                                                                \e[53;3H└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 9
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 8
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 45
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[3;195H\e[38;5;7m┌Status─────────────────────────────────────────┐\e[4;195H│Waiting for input...                           │\e[5;195H└───────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 15
+    content: "\e[6;3H\e[38;5;11m┌Menu──────────────────┐\e[38;5;15m┌\e[38;5;7mSummary\e[6;122H\e[38;5;15m┐\e[38;5;7m┌Scans──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[7;3H\e[38;5;11m│\e[1mDetection             \e[22m│\e[38;5;15m│\e[7;122H│\e[38;5;7m│\e[39mEngine                              Result                                                                             \e[38;5;7m│\e[8;3H\e[38;5;11m│\e[39mDetails               \e[38;5;11m│\e[38;5;15m│\e[8;48H\e[1m\e[38;5;9m6 security vendors flagged this IP address as malicious\e[8;115H\e[22m\e[38;5;15m      \e[8;122H│\e[38;5;7m│\e[1mCyRadar                             ❗️\e[8;162H malicious                                                                       \e[22m│\e[9;3H\e[38;5;11m│\e[39mRelations             \e[38;5;11m│\e[38;5;15m│\e[9;122H│\e[38;5;7m│\e[39mCRDF                                ❗️\e[9;162H malicious                                                                       \e[38;5;7m│\e[10;3H\e[38;5;11m│\e[39mCommunity             \e[38;5;11m│\e[38;5;15m│\e[10;61H13.107.4.52\e[10;73H(\e[10;75H13.107.4.0/22\e[10;89H)\e[10;117H   \e[10;121H │\e[38;5;7m│\e[39mESTsecurity                         ❗️\e[10;162H malicious                                                                       \e[38;5;7m│\e[11;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[11;57H8068\e[11;62H(\e[11;64HMICROSOFT-CORP-MSN-AS-BLOCK\e[11;92H)\e[11;113H   \e[11;117H  \e[11;120H  │\e[38;5;7m│\e[39mG-Data                              ❗️\e[11;162H malware                                                                         \e[38;5;7m│\e[12;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[12;111H   \e[12;115H  \e[12;118H    │\e[38;5;7m│\e[39mComodo Valkyrie Verdict             ❗️\e[12;162H malicious                                                                       \e[38;5;7m│\e[13;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[13;59H❌\e[13;62H23\e[13;65H---------------------\e[13;87H22\e[13;90H✅\e[13;119H   │\e[38;5;7m│\e[39mBitDefender                         ❗️\e[13;162H malware                                                                         \e[38;5;7m│\e[14;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[14;68H\e[2mCommunity Score\e[14;122H\e[22m│\e[38;5;7m│\e[39mStopBadware                         ❔\e[14;162H unrated                                                                         \e[38;5;7m│\e[15;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[15;122H│\e[38;5;7m│\e[39mScantitan                           ✅\e[15;162H clean                                                                           \e[38;5;7m│\e[16;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[16;122H│\e[38;5;7m│\e[39mAntiy-AVL                           ✅\e[16;162H clean                                                                           \e[38;5;7m│\e[17;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[17;122H│\e[38;5;7m│\e[39mCyble                               ✅\e[17;162H clean                                                                           \e[38;5;7m│\e[18;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[18;122H│\e[38;5;7m│\e[39malphaMountain.ai                    ✅\e[18;162H clean                                                                           \e[38;5;7m│\e[19;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[19;122H│\e[38;5;7m│\e[39mSeclookup                           ✅\e[19;162H clean                                                                           \e[38;5;7m│\e[20;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[20;122H│\e[38;5;7m│\e[39mYandex Safebrowsing                 ✅\e[20;162H clean                                                                           \e[38;5;7m│\e[21;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[21;122H│\e[38;5;7m│\e[39mMalBeacon                           ✅\e[21;162H clean                                                                           \e[38;5;7m│\e[22;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[22;122H│\e[38;5;7m│\e[39mCyan                                ❔\e[22;162H unrated                                                                         \e[38;5;7m│\e[23;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[23;122H│\e[38;5;7m│\e[39mESET                                ✅\e[23;162H clean                                                                           \e[38;5;7m│\e[24;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[24;122H│\e[38;5;7m│\e[39mIPsum                               ✅\e[24;162H clean                                                                           \e[38;5;7m│\e[25;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[25;122H│\e[38;5;7m│\e[39mEmergingThreats                     ✅\e[25;162H clean                                                                           \e[38;5;7m│\e[26;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[26;122H│\e[38;5;7m│\e[39mJuniper Networks                    ✅\e[26;162H clean                                                                           \e[38;5;7m│\e[27;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[27;122H│\e[38;5;7m│\e[39mQuick Heal                          ✅\e[27;162H clean                                                                           \e[38;5;7m│\e[28;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[28;122H│\e[38;5;7m│\e[39mPREBYTES                            ✅\e[28;162H clean                                                                           \e[38;5;7m│\e[29;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[29;122H│\e[38;5;7m│\e[39mAcronis                             ✅\e[29;162H clean                                                                           \e[38;5;7m│\e[30;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[30;122H│\e[38;5;7m│\e[39mViriBack                            ✅\e[30;162H clean                                                                           \e[38;5;7m│\e[31;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[31;122H│\e[38;5;7m│\e[39msecurolytics                        ✅\e[31;162H clean                                                                           \e[38;5;7m│\e[32;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[32;122H│\e[38;5;7m│\e[39mBlueliv                             ✅\e[32;162H clean                                                                           \e[38;5;7m│\e[33;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[33;122H│\e[38;5;7m│\e[39mQuttera                             ✅\e[33;162H clean                                                                           \e[38;5;7m│\e[34;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[34;122H│\e[38;5;7m│\e[39mCertego                             ✅\e[34;162H clean                                                                           \e[38;5;7m│\e[35;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[35;122H│\e[38;5;7m│\e[39mEonScope                            ✅\e[35;162H clean                                                                           \e[38;5;7m│\e[36;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[36;122H│\e[38;5;7m│\e[39mAlienVault                          ✅\e[36;162H clean                                                                           \e[38;5;7m│\e[37;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[37;122H│\e[38;5;7m│\e[39mSecureBrain                         ✅\e[37;162H clean                                                                           \e[38;5;7m│\e[38;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[38;122H│\e[38;5;7m│\e[39mLionic                              ✅\e[38;162H clean                                                                           \e[38;5;7m│\e[39;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[39;122H│\e[38;5;7m│\e[39mArmis                               ✅\e[39;162H clean                                                                           \e[38;5;7m│\e[40;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[40;122H│\e[38;5;7m│\e[39mAutoShun                            ❔\e[40;162H unrated                                                                         \e[38;5;7m│\e[41;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[41;122H│\e[38;5;7m│\e[39mTrustwave                           ✅\e[41;162H clean                                                                           \e[38;5;7m│\e[42;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[42;122H│\e[38;5;7m│\e[39mAbusix                              ✅\e[42;162H clean                                                                           \e[38;5;7m│\e[43;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[43;122H│\e[38;5;7m│\e[39mPhishing Database                   ✅\e[43;162H clean                                                                           \e[38;5;7m│\e[44;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[44;122H│\e[38;5;7m│\e[39mThreatHive                          ✅\e[44;162H clean                                                                           \e[38;5;7m│\e[45;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[45;122H│\e[38;5;7m│\e[39mPhishtank                           ✅\e[45;162H clean                                                                           \e[38;5;7m│\e[46;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[46;122H│\e[38;5;7m│\e[39mURLhaus                             ✅\e[46;162H clean                                                                           \e[38;5;7m│\e[47;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[47;122H│\e[38;5;7m│\e[39m0xSI_f33d                           ❔\e[47;162H unrated                                                                         \e[38;5;7m│\e[48;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[48;122H│\e[38;5;7m│\e[39mFraudScore                          ✅\e[48;162H clean                                                                           \e[38;5;7m│\e[49;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[49;122H│\e[38;5;7m│\e[39mSegasec                             ✅\e[49;162H clean                                                                           \e[38;5;7m│\e[50;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[50;122H│\e[38;5;7m│\e[39mNetcraft                            ❔\e[50;162H unrated                                                                         \e[38;5;7m│\e[51;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[51;122H│\e[38;5;7m│\e[39mFortinet                            ✅\e[51;162H clean                                                                           \e[38;5;7m│\e[52;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;15m│\e[52;122H│\e[38;5;7m│\e[39mdesenmascara.me                     ✅\e[52;162H clean                                                                           \e[38;5;7m│\e[53;3H\e[38;5;11m└──────────────────────┘\e[38;5;15m└\e[53;122H┘\e[38;5;7m└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 12
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 82
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 98
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 73
+    content: "\e[6;3H\e[38;5;7m┌Menu──────────────────┐\e[6;28H\e[38;5;11mSummary\e[7;3H\e[38;5;7m│\e[1mDetection             \e[22m│\e[8;3H│\e[8;26H│\e[9;3H│\e[9;26H│\e[10;3H│\e[10;26H│\e[11;3H│\e[11;26H│\e[12;3H│\e[12;26H│\e[13;3H│\e[13;26H│\e[14;3H│\e[14;26H│\e[15;3H│\e[15;26H│\e[16;3H│\e[16;26H│\e[17;3H│\e[17;26H│\e[18;3H│\e[18;26H│\e[19;3H│\e[19;26H│\e[20;3H│\e[20;26H│\e[21;3H│\e[21;26H│\e[22;3H│\e[22;26H│\e[23;3H│\e[23;26H│\e[24;3H│\e[24;26H│\e[25;3H│\e[25;26H│\e[26;3H│\e[26;26H│\e[27;3H│\e[27;26H│\e[28;3H│\e[28;26H│\e[29;3H│\e[29;26H│\e[30;3H│\e[30;26H│\e[31;3H│\e[31;26H│\e[32;3H│\e[32;26H│\e[33;3H│\e[33;26H│\e[34;3H│\e[34;26H│\e[35;3H│\e[35;26H│\e[36;3H│\e[36;26H│\e[37;3H│\e[37;26H│\e[38;3H│\e[38;26H│\e[39;3H│\e[39;26H│\e[40;3H│\e[40;26H│\e[41;3H│\e[41;26H│\e[42;3H│\e[42;26H│\e[43;3H│\e[43;26H│\e[44;3H│\e[44;26H│\e[45;3H│\e[45;26H│\e[46;3H│\e[46;26H│\e[47;3H│\e[47;26H│\e[48;3H│\e[48;26H│\e[49;3H│\e[49;26H│\e[50;3H│\e[50;26H│\e[51;3H│\e[51;26H│\e[52;3H│\e[52;26H│\e[53;3H└──────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 12
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 86
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 71
+    content: "\e[6;28H\e[38;5;7mSummary\e[6;123H\e[38;5;11m┌Scans──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[7;123H│\e[7;243H│\e[8;123H│\e[1mCyRadar                             ❗️\e[8;162H malicious                                                                       \e[22m│\e[9;123H│\e[9;243H│\e[10;123H│\e[10;243H│\e[11;123H│\e[11;243H│\e[12;123H│\e[12;243H│\e[13;123H│\e[13;243H│\e[14;123H│\e[14;243H│\e[15;123H│\e[15;243H│\e[16;123H│\e[16;243H│\e[17;123H│\e[17;243H│\e[18;123H│\e[18;243H│\e[19;123H│\e[19;243H│\e[20;123H│\e[20;243H│\e[21;123H│\e[21;243H│\e[22;123H│\e[22;243H│\e[23;123H│\e[23;243H│\e[24;123H│\e[24;243H│\e[25;123H│\e[25;243H│\e[26;123H│\e[26;243H│\e[27;123H│\e[27;243H│\e[28;123H│\e[28;243H│\e[29;123H│\e[29;243H│\e[30;123H│\e[30;243H│\e[31;123H│\e[31;243H│\e[32;123H│\e[32;243H│\e[33;123H│\e[33;243H│\e[34;123H│\e[34;243H│\e[35;123H│\e[35;243H│\e[36;123H│\e[36;243H│\e[37;123H│\e[37;243H│\e[38;123H│\e[38;243H│\e[39;123H│\e[39;243H│\e[40;123H│\e[40;243H│\e[41;123H│\e[41;243H│\e[42;123H│\e[42;243H│\e[43;123H│\e[43;243H│\e[44;123H│\e[44;243H│\e[45;123H│\e[45;243H│\e[46;123H│\e[46;243H│\e[47;123H│\e[47;243H│\e[48;123H│\e[48;243H│\e[49;123H│\e[49;243H│\e[50;123H│\e[50;243H│\e[51;123H│\e[51;243H│\e[52;123H│\e[52;243H│\e[53;123H└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 87
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 13
+    content: "\e[8;124HCyRadar                             ❗️\e[8;162H malicious                                                                       \e[9;124H\e[1m\e[38;5;11mCRDF                                ❗️\e[9;162H malicious                                                                       \e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 12
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 86
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 49
+    content: "\e[9;124HCRDF                                ❗️\e[9;162H malicious                                                                       \e[10;124H\e[1m\e[38;5;11mESTsecurity                         ❗️\e[10;162H malicious                                                                       \e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 10
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 91
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 12
+    content: "\e[9;124H\e[1m\e[38;5;11mCRDF                                ❗️\e[9;162H malicious                                                                       \e[10;124H\e[22m\e[39mESTsecurity                         ❗️\e[10;162H malicious                                                                       \e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 84
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 79
+    content: "\e[8;124H\e[1m\e[38;5;11mCyRadar                             ❗️\e[8;162H malicious                                                                       \e[9;124H\e[22m\e[39mCRDF                                ❗️\e[9;162H malicious                                                                       \e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 89
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 56
+    content: "\e[8;124HZeroCERT                            ✅\e[8;162H clean                                                                           \e[9;124HGreenSnow\e[9;160H✅\e[9;163Hclean    \e[10;124HSophos     \e[10;160H✅\e[10;163Hclean    \e[11;124HAICC (MONITORAPP)\e[11;160H✅\e[11;163Hclean  \e[12;125HINS Army      \e[12;140H       \e[12;160H✅\e[12;163Hclean    \e[13;124HAvira      \e[13;160H✅\e[13;163Hclean  \e[14;124HWebroot    \e[14;160H✅\e[14;163Hcle\e[14;167Hn  \e[15;124HNucleon  \e[16;124HMalwareDomainList\e[17;124HNotMining\e[17;160H❔\e[17;163Hunr\e[17;167Hted\e[18;124HBaidu-International\e[19;124HDr.Web   \e[20;124HURLQuery           \e[20;160H❔\e[20;163Hunr\e[20;167Hted\e[21;127Hwared \e[22;124HTencent\e[22;160H✅\e[22;163Hcle\e[22;167Hn  \e[23;124HSpam404\e[24;124HDNS8 \e[25;124HADMINUSLabs    \e[26;124HKaspersky       \e[26;160H❔\e[26;163Hunr\e[26;167Hted\e[27;124HEmsisoft  \e[28;124HK7AntiVirus\e[29;124HVX Vault\e[30;124Hzvelo   \e[31;124HHoplite Industries\e[32;124HGoog\e[32;129He Safebrowsing\e[33;124HChong Lua\e[33;134HDao\e[34;125HMC Threat\e[34;135HIntelligence\e[35;124Hmalwares.com\e[35;137HURL\e[35;141Hchecker\e[36;124HBADWARE.INFO\e[37;125HafeToOpen \e[37;160H❔\e[37;163Hunr\e[37;167Hted\e[38;124HMalS\e[38;129Hlo\e[39;124HViru\e[39;129Hdie\e[39;133HExternal\e[39;142HSite\e[39;147HScan\e[40;124HForcepoint\e[40;135HThreatSeeker\e[40;160H✅\e[40;163Hcle\e[40;167Hn  \e[41;124HOpenPhish\e[42;124HCyberCrime\e[43;124HSnort IP\e[43;133Hs\e[43;135Hmple list\e[44;124HViettel Threat\e[44;139HIntelligence\e[45;124HWeb Security\e[45;137HGuard\e[46;124HLumu   \e[46;160H❔\e[46;163Hunr\e[46;167Hted\e[47;124HSucuri SiteCheck\e[47;160H✅\e[47;163Hcle\e[47;167Hn  \e[48;124HSCUMWARE.org\e[49;124HMalwarePatrol\e[50;124HH\e[50;126Himd\e[50;130Hl Security\e[50;160H✅\e[50;163Hcle\e[50;167Hn  \e[51;124H\e[1m\e[38;5;11mThreatsourcing                      ✅\e[51;162H clean                                                                           \e[52;124H\e[22m\e[39m               \e[52;160H  \e[52;163H     \e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 89
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 103
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 37
+    content: "\e[8;124H\e[1m\e[38;5;11mCyRadar                             ❗️\e[8;162H malicious                                                                       \e[9;124H\e[22m\e[39mCRDF     \e[9;160H❗️\e[9;163Hmalicious\e[10;124HESTsecurity\e[10;160H❗️\e[10;163Hmalicious\e[11;124HG-Data           \e[11;160H❗️\e[11;163Hmalware\e[12;125Homodo Valkyrie\e[12;140HVerdict\e[12;160H❗️\e[12;163Hmalicious\e[13;124HBitDefender\e[13;160H❗️\e[13;163Hmalware\e[14;124HStopBadware\e[14;160H❔\e[14;163Hunr\e[14;167Hted\e[15;124HScantitan\e[16;124HAntiy-AVL        \e[17;124HCyble    \e[17;160H✅\e[17;163Hcle\e[17;167Hn  \e[18;124HalphaMountain.ai   \e[19;124HSeclookup\e[20;124HYandex Safebrowsing\e[20;160H✅\e[20;163Hcle\e[20;167Hn  \e[21;127HBeacon\e[22;124HCyan   \e[22;160H❔\e[22;163Hunr\e[22;167Hted\e[23;124HESET   \e[24;124HIPsum\e[25;124HEmergingThreats\e[26;124HJuniper Networks\e[26;160H✅\e[26;163Hcle\e[26;167Hn  \e[27;124HQuick Heal\e[28;124HPREBYTES   \e[29;124HAcronis \e[30;124HViriBack\e[31;124Hsecurolytics      \e[32;124HBlue\e[32;129Hiv            \e[33;124HQuttera  \e[33;134H   \e[34;125Hertego   \e[34;135H            \e[35;124HEonScope    \e[35;137H   \e[35;141H       \e[36;124HAlienVault  \e[37;125HecureBrain\e[37;160H✅\e[37;163Hcle\e[37;167Hn  \e[38;124HLion\e[38;129Hc \e[39;124HArmi\e[39;129H   \e[39;133H        \e[39;142H    \e[39;147H    \e[40;124HAutoShun  \e[40;135H            \e[40;160H❔\e[40;163Hunr\e[40;167Hted\e[41;124HTrustwave\e[42;124HAbusix    \e[43;124HPhishing\e[43;133HD\e[43;135Htabase   \e[44;124HThreatHive    \e[44;139H            \e[45;124HPhishtank   \e[45;137H     \e[46;124HURLhaus\e[46;160H✅\e[46;163Hcle\e[46;167Hn  \e[47;124H0xSI_f33d       \e[47;160H❔\e[47;163Hunr\e[47;167Hted\e[48;124HFraudScore  \e[49;124HSegasec      \e[50;124HN\e[50;126Htcr\e[50;130Hft        \e[50;160H❔\e[50;163Hunr\e[50;167Hted\e[51;124HFortinet                            ✅\e[51;162H clean                                                                           \e[52;124Hdesenmascara.me\e[52;160H✅\e[52;163Hclean\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 89
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 40
+    content: "\e[8;124HCyRadar                             ❗️\e[8;162H malicious                                                                       \e[9;124H\e[1m\e[38;5;11mCRDF                                ❗️\e[9;162H malicious                                                                       \e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 10
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 92
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 94
+    content: "\e[6;28H\e[38;5;11mSummary\e[6;123H\e[38;5;7m┌Scans──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[7;123H│\e[7;243H│\e[8;123H│\e[8;243H│\e[9;123H│\e[1mCRDF                                ❗️\e[9;162H malicious                                                                       \e[22m│\e[10;123H│\e[10;243H│\e[11;123H│\e[11;243H│\e[12;123H│\e[12;243H│\e[13;123H│\e[13;243H│\e[14;123H│\e[14;243H│\e[15;123H│\e[15;243H│\e[16;123H│\e[16;243H│\e[17;123H│\e[17;243H│\e[18;123H│\e[18;243H│\e[19;123H│\e[19;243H│\e[20;123H│\e[20;243H│\e[21;123H│\e[21;243H│\e[22;123H│\e[22;243H│\e[23;123H│\e[23;243H│\e[24;123H│\e[24;243H│\e[25;123H│\e[25;243H│\e[26;123H│\e[26;243H│\e[27;123H│\e[27;243H│\e[28;123H│\e[28;243H│\e[29;123H│\e[29;243H│\e[30;123H│\e[30;243H│\e[31;123H│\e[31;243H│\e[32;123H│\e[32;243H│\e[33;123H│\e[33;243H│\e[34;123H│\e[34;243H│\e[35;123H│\e[35;243H│\e[36;123H│\e[36;243H│\e[37;123H│\e[37;243H│\e[38;123H│\e[38;243H│\e[39;123H│\e[39;243H│\e[40;123H│\e[40;243H│\e[41;123H│\e[41;243H│\e[42;123H│\e[42;243H│\e[43;123H│\e[43;243H│\e[44;123H│\e[44;243H│\e[45;123H│\e[45;243H│\e[46;123H│\e[46;243H│\e[47;123H│\e[47;243H│\e[48;123H│\e[48;243H│\e[49;123H│\e[49;243H│\e[50;123H│\e[50;243H│\e[51;123H│\e[51;243H│\e[52;123H│\e[52;243H│\e[53;123H└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 12
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 85
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 80
+    content: "\e[6;3H\e[38;5;11m┌Menu──────────────────┐\e[6;28H\e[38;5;7mSummary\e[7;3H\e[38;5;11m│\e[1mDetection             \e[22m│\e[8;3H│\e[8;26H│\e[9;3H│\e[9;26H│\e[10;3H│\e[10;26H│\e[11;3H│\e[11;26H│\e[12;3H│\e[12;26H│\e[13;3H│\e[13;26H│\e[14;3H│\e[14;26H│\e[15;3H│\e[15;26H│\e[16;3H│\e[16;26H│\e[17;3H│\e[17;26H│\e[18;3H│\e[18;26H│\e[19;3H│\e[19;26H│\e[20;3H│\e[20;26H│\e[21;3H│\e[21;26H│\e[22;3H│\e[22;26H│\e[23;3H│\e[23;26H│\e[24;3H│\e[24;26H│\e[25;3H│\e[25;26H│\e[26;3H│\e[26;26H│\e[27;3H│\e[27;26H│\e[28;3H│\e[28;26H│\e[29;3H│\e[29;26H│\e[30;3H│\e[30;26H│\e[31;3H│\e[31;26H│\e[32;3H│\e[32;26H│\e[33;3H│\e[33;26H│\e[34;3H│\e[34;26H│\e[35;3H│\e[35;26H│\e[36;3H│\e[36;26H│\e[37;3H│\e[37;26H│\e[38;3H│\e[38;26H│\e[39;3H│\e[39;26H│\e[40;3H│\e[40;26H│\e[41;3H│\e[41;26H│\e[42;3H│\e[42;26H│\e[43;3H│\e[43;26H│\e[44;3H│\e[44;26H│\e[45;3H│\e[45;26H│\e[46;3H│\e[46;26H│\e[47;3H│\e[47;26H│\e[48;3H│\e[48;26H│\e[49;3H│\e[49;26H│\e[50;3H│\e[50;26H│\e[51;3H│\e[51;26H│\e[52;3H│\e[52;26H│\e[53;3H└──────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 88
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 56
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 10
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 91
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 13
+    content: "\e[6;27H\e[38;5;7m┌Whois Lookup─────────────────────────────────────────────────────────────────────────────────────────\e[7;4H\e[39mDetection             \e[7;27H\e[38;5;7m│\e[39m                                                                                                      \e[7;160H      \e[8;4H\e[1m\e[38;5;11mDetails               \e[8;27H\e[22m\e[38;5;7m│\e[1mNetRange: 13.64.0.0 - 13.107.255.255                                                                                                                                                                                   \e[9;27H\e[22m│\e[39mCIDR: 13.64.0.0/11, 13.96.0.0/13, 13.104.0.0/14                                                                                                                                                                        \e[10;27H\e[38;5;7m│\e[39mNetName: MSFT                                                                                              \e[10;160H  \e[10;163H         \e[11;27H\e[38;5;7m│\e[39mNetHandle: NET-13-64-0-0-1                                                                            \e[11;160H  \e[11;163H       \e[12;27H\e[38;5;7m│\e[39mParent: NET13 (NET-13-0-0-0-0)                                                                        \e[12;131H        \e[12;140H       \e[12;160H  \e[12;163H         \e[13;27H\e[38;5;7m│\e[39mNetType: Direct Allocation                                                                                 \e[13;160H  \e[13;163H       \e[14;27H\e[38;5;7m│\e[39mOriginAS:                                                                                                  \e[14;160H  \e[14;163H       \e[15;27H\e[38;5;7m│\e[39mOrganization: Microsoft Corporation (MSFT)                                                               \e[15;160H  \e[15;163H     \e[16;27H\e[38;5;7m│\e[39mRegDate: 2015-03-26                                                                                      \e[16;160H  \e[16;163H     \e[17;27H\e[38;5;7m│\e[39mUpdated: 2021-12-14                                                                                  \e[17;160H  \e[17;163H     \e[18;27H\e[38;5;7m│\e[39mRef: https://rdap.arin.net/registry/ip/13.64.0.0                                                                \e[18;160H  \e[18;163H     \e[19;27H\e[38;5;7m│\e[39mOrgName: Microsoft Corporation                                                                           \e[19;160H  \e[19;163H     \e[20;27H\e[38;5;7m│\e[39mOrgId: MSFT                                                                                           \e[20;131H            \e[20;160H  \e[20;163H     \e[21;27H\e[38;5;7m│\e[39mAddress: One Microsoft Way                                                                               \e[21;160H  \e[21;163H     \e[22;27H\e[38;5;7m│\e[39mCity: Redmond                                                                                       \e[22;160H  \e[22;163H       \e[23;27H\e[38;5;7m│\e[39mStateProv: WA                                                                                       \e[23;160H  \e[23;163H     \e[24;27H\e[38;5;7m│\e[39mPostalCode: 98052                                                                                    \e[24;160H  \e[24;163H     \e[25;27H\e[38;5;7m│\e[39mCountry: US                                                                                                    \e[25;160H  \e[25;163H     \e[26;27H\e[38;5;7m│\e[39mRegDate: 1998-07-10                                                                                    \e[26;132H        \e[26;160H  \e[26;163H     \e[27;27H\e[38;5;7m│\e[39mUpdated: 2022-03-28                                                                                  \e[27;130H    \e[27;160H  \e[27;163H     \e[28;27H\e[38;5;7m│\e[39mComment: To report suspected security issues specific to traffic emanating from Microsoft online ser    \e[28;160H  \e[28;163H     \e[29;27H\e[38;5;7m│\e[39mComment: * https://cert.microsoft.com.                                                                 \e[29;160H  \e[29;163H     \e[30;27H\e[38;5;7m│\e[39mComment:                                                                                                \e[30;160H  \e[30;163H     \e[31;27H\e[38;5;7m│\e[39mComment: For SPAM and other abuse issues, such as Microsoft Accounts, please contact:                       \e[31;160H  \e[31;163H     \e[32;27H\e[38;5;7m│\e[39mComment: * abuse@microsoft.com.                                                                        \e[32;160H  \e[32;163H     \e[33;27H\e[38;5;7m│\e[39mComment:                                                                                               \e[33;160H  \e[33;163H     \e[34;27H\e[38;5;7m│\e[39mComment: To report security vulnerabilities in Microsoft products and services, please contact:        \e[34;160H  \e[34;163H     \e[35;27H\e[38;5;7m│\e[39mComment: * secure@microsoft.com.                                                                        \e[35;160H  \e[35;163H     \e[36;27H\e[38;5;7m│\e[39mComment:                                                                                                  \e[36;160H  \e[36;163H     \e[37;27H\e[38;5;7m│\e[39mComment: For legal and law enforcement-related requests, please contact:                                   \e[37;160H  \e[37;163H     \e[38;27H\e[38;5;7m│\e[39mComment: * msndcc@microsoft.com                                                                       \e[38;160H  \e[38;163H     \e[39;27H\e[38;5;7m│\e[39mComment:                                                                                             \e[39;160H  \e[39;163H     \e[40;27H\e[38;5;7m│\e[39mComment: For routing, peering or DNS issues, please                                                     \e[40;160H  \e[40;163H       \e[41;27H\e[38;5;7m│\e[39mComment: contact:                                                                                        \e[41;160H  \e[41;163H     \e[42;27H\e[38;5;7m│\e[39mComment: * IOC@microsoft.com                                                                          \e[42;160H  \e[42;163H     \e[43;27H\e[38;5;7m│\e[39mRef: https://rdap.arin.net/registry/entity/MSFT                                                         \e[43;133H        \e[43;160H  \e[43;163H     \e[44;27H\e[38;5;7m│\e[39mOrgAbuseHandle: MAC74-ARIN                                                                                \e[44;160H  \e[44;163H     \e[45;27H\e[38;5;7m│\e[39mOrgAbuseName: Microsoft Abuse Contact                                                                    \e[45;160H  \e[45;163H     \e[46;27H\e[38;5;7m│\e[39mOrgAbusePhone: +1-425-882-8080                                                                         \e[46;160H  \e[46;163H     \e[47;27H\e[38;5;7m│\e[39mOrgAbuseEmail: abuse@microsoft.com                                                                       \e[47;160H  \e[47;163H       \e[48;27H\e[38;5;7m│\e[39mOrgAbuseRef: https://rdap.arin.net/registry/entity/MAC74-ARIN                                             \e[48;160H  \e[48;163H     \e[49;27H\e[38;5;7m│\e[39mOrgTechHandle: IPHOS5-ARIN                                                                             \e[49;160H  \e[49;163H     \e[50;27H\e[38;5;7m│\e[39mOrgTechName: IPHostmaster, IPHostmaster                                                                 \e[50;160H  \e[50;163H       \e[51;27H\e[38;5;7m│\e[39mOrgTechPhone: +1-425-538-6637                                                                           \e[51;160H  \e[51;163H     \e[52;27H\e[38;5;7m│\e[39mOrgTechEmail: iphostmaster@microsoft.com                                                                       \e[52;160H  \e[52;163H     \e[53;27H\e[38;5;7m└────────────────────────────────────────────────────────────────────────────────────────────────\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 79
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 86
+    content: "\e[6;3H\e[38;5;15m┌\U0001F310\e[6;6H General Information────────────────────────┐\e[38;5;7m┌Services\e[6;98H┐\e[39m┌World──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[7;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39mPort\e[7;66HTransport\e[7;80HService\e[7;98H\e[38;5;7m│\e[39m│\e[7;243H│\e[8;3H\e[38;5;15m│\e[1mIPv4                 13.107.4.52              \e[22m│\e[38;5;7m│\e[1m80          \e[8;66Htcp\e[8;80HN/A\e[8;98H\e[22m│\e[39m│                                    \e[38;5;15m⢀⣀⣀⡠\e[39m \e[38;5;15m⡄⠄⠄⡀⡀⣀\e[39m \e[38;5;15m⢀⢀\e[39m \e[38;5;15m⡀⢀\e[39m \e[38;5;15m⠄⠤\e[39m \e[38;5;15m⠄⢀\e[39m \e[38;5;15m⣠\e[39m \e[38;5;15m⣀\e[39m                                                                                │\e[9;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m443      \e[9;62H    tcp      \e[9;80HN/A\e[9;98H\e[38;5;7m│\e[39m│\e[9;126H\e[38;5;15m⢀⣀\e[9;129H⢄⡀⣀⣠⡾⡌⡛⣳⡴⠔\e[9;140H⠠⡄⡄⢔⠟⠍⠉⠁\e[9;150H⠁\e[9;152H⠉⠈\e[9;158H⠈\e[9;161H⠁⠉⡣⠔⠁⠁\e[9;175H⢄⠤⠤⢦⣖⡆⠢⠄\e[9;189H⠒⠖⠒\e[9;207H⠢⢆⢑⢠⠤⢀\e[9;243H\e[39m│\e[10;3H\e[38;5;15m│\e[1mDomains              msedge.net               \e[22m│\e[38;5;7m│\e[10;98H│\e[39m│\e[10;121H\e[38;5;15m⢀⠠⡦⢙⡗⣩⢝⠦⡄⠰⣟⣻⣿⣷⢶⡝⡯⣆⣴⠃⠁⠑⠑⠍⠄⠤\e[10;148H⣄\e[10;162H⠐⣗\e[10;176H⠉⠑⠋⠉⠁⠁\e[10;193H⡀⡄⠢⠰⠂⠒\e[10;205H⣀⡠\e[10;208H⠄⠤⠊⠊⠘⠑⢂⢂⠄\e[10;225H⠤⣄⠄⡠⣤⣀\e[10;243H\e[39m│\e[11;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[11;98H\e[38;5;7m│\e[39m│\e[38;5;15m⣄\e[11;107H⣀⣀⢄⣀⣀\e[11;120H⢀⠴⢅⠨⣚⣛⢒⠒⠾⢻⢐⠫⡪⡯⠞⢱⡑⠋⠈⠗⠓⠦⠠⡀⡀\e[11;149H⢷⣀\e[11;161H⣾⢏⠁\e[11;180H⢀⢀⡀⢀\e[11;191H⠠⡏⢎⡀\e[11;197H⢀⠔⢰⣴⡦⠐⠫⠈⠈\e[11;214H⠈⠉⠉\e[11;218H⠃\e[11;220H⠋⠈⢆⡠⠤⠠⠺⠃⠃\e[11;230H⠤⢀\e[11;233H⡀⣀\e[11;241H⢀⣠\e[39m│\e[12;3H\e[38;5;15m│\e[1mCity                 Redmond                  \e[22m│\e[38;5;7m│\e[39m      \e[12;98H\e[38;5;7m│\e[39m│\e[38;5;15m⠢⢀⡀⡀\e[12;105H⠦⣎\e[12;112H⠈⠈⠁⠁⠑⠒⠉⠉⠁⠉⠉⠉⠘⠻⠇⠦⠶⠲⠜⠭⠟⡿⠈⠓⢎⡏⡨⡏⢹⡶⡄\e[12;144H⠳⠠⣀\e[12;149H⢈⡟⠃\e[12;157H⢀⠤⠄⠊⠊⡁\e[12;164H⢀⢀\e[12;177H⠔⠈⠈⠁\e[12;183H⠉⣐⠐\e[12;187H⢤⣢⣤⡄\e[12;192H⠴⠒⠰⠃⠑⠈⠗⠐⣷\e[12;234H⠉⠁⠉⠈⠚⠈⠈⠈⠐\e[39m│\e[13;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[13;98H\e[38;5;7m│\e[39m│\e[38;5;15m⠛⠑⠿⣬⡈⢓⣱⠷\e[13;134H⢀⡤⠴⡿⣶⡤⢆⠺⢤⡀⢝⣗⠈\e[13;150H⠱\e[13;154H⡠⠇⠉\e[13;161H⠘⠦⠭⠅⠕\e[13;173H⢀⠠⠂⠁\e[13;178H⡀⢴⠍⠃\e[13;185H⠵⠙⠃⠈\e[13;199H⠉\e[13;235H⢀⡀\e[13;241H⡲⡐\e[39m│\e[14;3H\e[38;5;15m│\e[1mOrganization         Microsoft Corporatio     \e[22m│\e[38;5;7m│\e[14;98H│\e[39m│\e[14;104H\e[38;5;15m⠠⠽⠤⣄⣀⡀⣠⣶⠴⠆⠤⠠\e[14;133H⢰⡁\e[14;138H⠁⠉⡣⠉⠙⢸⡈⣥\e[14;151H⠑⠒⠠⠇\e[14;169H⣀⡀\e[14;173H⡅\e[14;175H⣀\e[14;177H⢀⡢⠘⣤⢤⡢\e[14;227H⢀⢀\e[14;230H⡠⣀⢄⠂⢑⢬⠢⠄⠢⠊⠁\e[14;242H⠁\e[39m│\e[15;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m           \e[15;64H      \e[15;98H\e[38;5;7m│\e[39m│\e[15;106H\e[38;5;15m⣀⡤⡻⠊⠛⠁\e[15;116H⠈⠉⠣⣀\e[15;134H⠘⠂⠦⢄⣀⢀⡸\e[15;144H⠁\e[15;146H⠸⢄⣀\e[15;167H⢀⣘⣌⢇\e[15;174H⣝⣷⣄⠴⣀⣰⠛\e[15;224H⢀⡀⠂\e[15;232H⢐⠋\e[15;235H⡭\e[15;243H\e[39m│\e[16;3H\e[38;5;15m│\e[1mISP                  Microsoft Corporatio     \e[22m│\e[38;5;7m│\e[16;98H│\e[39m│\e[16;105H\e[38;5;15m⠈⠁\e[16;118H⠘⠍⣢\e[16;138H⠘⢌⠄\e[16;147H⢀⢨⡇\e[16;167H⠵⠸⣧⣃⣳⣀⠒⠋⠈⠉⠉⠈⠁\e[16;225H⠈⢉⢾⡀\e[16;232H⠐⡤⠚\e[16;243H\e[39m│\e[17;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[17;98H│\e[39m│\e[17;120H\e[38;5;15m⠉⠻\e[38;5;1mX\e[17;143H\e[38;5;15m⡠⠞⢟⠛⣡⢊⣳⡆\e[17;168H⠈⠝⡱⠈\e[17;186H⣀\e[17;191H⢀⡀\e[17;226H⡨⣶⡐\e[17;243H\e[39m│\e[18;3H\e[38;5;15m│\e[1mASN                  AS8068                   \e[22m│\e[38;5;7m│\e[39m                        \e[18;98H\e[38;5;7m│\e[39m│\e[18;122H\e[38;5;15m⡆\e[18;143H⡠⠔⡾⠍⠋\e[18;150H⠁\e[18;167H⢀⣀⣀⡨\e[18;172H⡀⣀⣠⡄⢖⢆⡀\e[18;182H⣐⠉⠿⠛⠧⡀\e[18;189H⠠⡊⢵⡃\e[18;223H⢀⣠⠊⢀⡣⣥\e[18;243H\e[39m│\e[19;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m      \e[19;98H\e[38;5;7m│\e[39m│\e[19;121H\e[38;5;15m⠈⡇\e[19;141H⣠⠖⠛\e[19;167H⢸\e[19;171H⡴⠃\e[19;174H⢺⡍⠺⣽⡾⡄⡤⢲⠷⠐⠊⠑⠒⠚\e[19;190H⢱⠄⣿\e[19;217H⢀⡠⣦⢄⢠⠜⠁\e[19;226H⢸⡏\e[19;243H\e[39m│\e[20;3H\e[38;5;15m│\e[1mOperating System     N/A                      \e[22m│\e[38;5;7m│\e[20;98H│\e[39m│\e[20;122H\e[38;5;15m⠘⡄\e[20;140H⠈⡏\e[20;167H⠹⢶⣤⣔⡥⠠⠔⠒⢖⠛⠏\e[20;179H⠹⢟⣘⠤⠤⣤⣤\e[20;190H⠘⠦⠘\e[20;217H⠈⢓⠗⠘⡇⡇⢀⢀⠢⢣⠃\e[20;243H\e[39m│\e[21;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[21;98H\e[38;5;7m│\e[39m│\e[21;123H\e[38;5;15m⠈⠳⣀⡀\e[21;139H⡔⠊⠁\e[21;167H⡰⠊\e[21;175H⠛⠤⣄\e[21;179H⡤⠤⣀⣀⣀⣁⠇\e[21;218H⠙⢄\e[21;221H⠉⢲⡻⠛⠊⠁\e[21;243H\e[39m│\e[22;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[22;98H│\e[39m│\e[22;125H\e[38;5;15m⢙⢿⣄\e[22;132H⢀⠔⠒⠚⠉⠛⣪⠇\e[22;166H⡤⠂\e[22;178H⠉\e[22;182H⠈⠈⣾⡆\e[22;190H⢞⢅⡀⢀\e[22;218H⢀⠕\e[22;243H\e[39m│\e[23;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[23;98H│\e[39m│\e[23;126H\e[38;5;15m⠹⣿⢢\e[23;132H⠸\e[23;138H⢘⡞⣿\e[23;164H⢀⠎\e[23;184H⠘⡼⡄\e[23;191H⢿⠭⢻⡒⠠⠒⢰⡀\e[23;217H⢀⢔⠦\e[23;243H\e[39m│\e[24;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[24;98H│\e[39m│\e[24;107H\e[38;5;15m⠐⠳⣦\e[24;127H⠈\e[24;129H⣷\e[24;132H⠸⡀\e[24;135H⡴⢲⠘⠉⠛⡷⣦⣀⣀\e[24;164H⢼\e[24;185H⢹⠘⡄\e[24;194H⡼\e[24;198H⠘⠔⡄\e[24;204H⢀⡰⠒⠹⡀\e[24;213H⡄⣲⡒⠋⠁⠈⠃\e[24;243H\e[39m│\e[25;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[25;98H│\e[39m│\e[25;109H\e[38;5;15m⠈\e[25;130H⠑⠦⣄⣙⡉⠁⣏⣀⡀\e[25;140H⠛⠚⠛⠋⠙⠃\e[25;164H⢸\e[25;186H⢣⡘⡄\e[25;191H⢠⠤⠚⠁\e[25;200H⡂\e[25;203H⡠⠃\e[25;208H⢘⣤\e[25;213H⠣⡉\e[25;218H⢰⡹\e[25;243H\e[39m│\e[26;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[26;98H│\e[39m│\e[26;134H\e[38;5;15m⠘⠒⢶⡀⡇\e[26;142H⢠⣀\e[26;164H⢱⡀\e[26;187H⠘⡧⠖⣚⡈\e[26;200H⠸⡀⢈⠆\e[26;209H⠈⡶⢦\e[26;214H⡐\e[26;218H⢘⣿⣦\e[26;243H\e[39m│\e[27;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[27;98H│\e[39m│\e[27;137H\e[38;5;15m⠓⣷⣴⡦⠏⠹⠆⠉⠛⠙⢧\e[27;165H⠓⡄\e[27;188H⠉⠉⠁⡇\e[27;201H⢣⣾⢄\e[27;210H⣯⡀⠹⠊⠁\e[27;217H⠠⠏⢸⡿⡅\e[27;243H\e[39m│\e[28;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m    \e[28;57H        \e[28;66H      \e[28;73H        \e[28;82H  \e[28;85H       \e[28;93H     \e[38;5;7m│\e[39m│  \e[28;103H    \e[28;108H         \e[28;118H      \e[28;125H   \e[28;139H\e[38;5;15m⠁⢹\e[28;148H⠓⠒⢦⡀\e[28;166H⠙⠢⡠⠤⠤⠔⠒⢆⣤\e[28;190H⡌\e[28;202H⠈⠊\e[28;208H⠐⡦⡸⡕⡆\e[28;216H⡴⢛⠆⠈⠛⠃\e[28;243H\e[39m│\e[29;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m              \e[29;98H\e[38;5;7m│\e[39m│\e[29;139H\e[38;5;15m⣰⠏\e[29;151H⡆⡀\e[29;174H⢠⠇\e[29;188H⡠⠊\e[29;209H⠘⢎⠳⡵\e[29;214H⡔⠋\e[29;217H⢸⢤⣤⣴⢰⡆⢀\e[29;243H\e[39m│\e[30;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[30;98H│\e[39m│\e[30;139H\e[38;5;15m⡷\e[30;152H⠉⠲⠢⠄⡀\e[30;174H⠘⢄\e[30;186H⢀⡞\e[30;210H⠈⢆⠙⡆⠸⢄⢄⡎⣯⣿⠁⣬⢭⣷⡧⠒⠒⠤⣀\e[30;230H⠠⣤\e[30;243H\e[39m│\e[31;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m   \e[31;56H     \e[31;62H       \e[31;70H    \e[31;75H  \e[31;78H         \e[31;88H         \e[31;98H\e[38;5;7m│\e[39m│    \e[31;105H        \e[31;139H\e[38;5;15m⢧\e[31;156H⠈⠧\e[31;175H⠈⡆\e[31;186H⢸\e[31;212H⠱⠖⣆⣤⣀⢀⡙⣙⠁⢀\e[31;224H⠞⢉⣆⢀⣈⣶⠚⠋⠻⢤⣀\e[31;243H\e[39m│\e[32;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m       \e[32;98H\e[38;5;7m│\e[39m│\e[32;139H\e[38;5;15m⠈⢄\e[32;156H⡠⠃\e[32;176H⢣\e[32;186H⠈⡆\e[32;190H⢀\e[32;215H⠈⠈⠉⠛⠋⠟⠉\e[32;223H⣤⣀⡈⠁⣩⠁⠓⠳\e[32;234H⠛⠧\e[32;243H\e[39m│\e[33;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[33;98H│\e[39m│\e[38;5;15m⡀\e[33;140H⠐⡆\e[33;155H⢘⠁\e[33;175H⢀⠏\e[33;187H⡇⢀⣠⢎⡆\e[33;220H⡠⠶⠼⠁⠰⣃\e[33;227H⡏⢧\e[33;237H⡄\e[33;242H⢀\e[39m│\e[34;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m   \e[34;56H               \e[34;72H  \e[34;75H         \e[34;85H        \e[34;94H   \e[34;98H\e[38;5;7m│\e[39m│\e[38;5;15m⠁\e[39m      \e[34;108H      \e[34;115H        \e[34;142H\e[38;5;15m⠑⡄\e[34;155H⢸\e[34;175H⠘⡄\e[34;185H⡤⠊\e[34;188H⢸\e[34;190H⠸\e[34;218H⣀⡼⠃\e[34;225H⠈⠓⠃⠈⢆\e[34;236H⡀⠈\e[34;241H⠺⠉\e[39m│\e[35;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m        \e[35;98H\e[38;5;7m│\e[39m│\e[35;143H\e[38;5;15m⡐\e[35;152H⢀⣀⠤⠃\e[35;176H⢸\e[35;184H⠈⡆\e[35;188H⢞\e[35;190H⡅\e[35;216H⡖⠉⠁\e[35;230H⢷⡀\e[35;236H⠛⠆\e[35;243H\e[39m│\e[36;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[36;98H│\e[39m│\e[36;143H\e[38;5;15m⡂\e[36;151H⠠⡃\e[36;177H⡆\e[36;184H⡎⠁\e[36;188H⠘⠚\e[36;216H⡇\e[36;231H⢱\e[36;243H\e[39m│\e[37;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[37;55H                   \e[37;75H         \e[37;85H      \e[37;92H      \e[38;5;7m│\e[39m│\e[37;142H\e[38;5;15m⠨\e[37;150H⢀⡘\e[37;177H⠈⡆\e[37;183H⡞⠁\e[37;216H⠹⡀\e[37;222H⣀⡀\e[37;231H⢰⠁\e[37;243H\e[39m│\e[38;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m       \e[38;98H\e[38;5;7m│\e[39m│\e[38;142H\e[38;5;15m⢘\e[38;148H⢦⢤⠊\e[38;178H⠣⠤⠒⠖⠋\e[38;216H⠰⣃⠴⠲⠊⠉\e[38;223H⠈⠱⣾⡀\e[38;230H⢀⠎\e[38;239H⢠⡀\e[38;243H\e[39m│\e[39;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39;98H│\e[39m│\e[39;142H\e[38;5;15m⡆\e[39;146H⢠⡠⠜\e[39;226H⠹⠤⠤⡴⠚\e[39;240H⡟⣴\e[39;243H\e[39m│\e[40;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m     \e[40;58H  \e[40;61H   \e[40;65H       \e[40;73H      \e[40;98H\e[38;5;7m│\e[39m│\e[40;141H\e[38;5;15m⢐⡅\e[40;145H⣪⠎\e[40;228H⠸⣺\e[40;238H⣠⢚⠟⠁\e[40;243H\e[39m│\e[41;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[41;98H│\e[39m│\e[41;141H\e[38;5;15m⢬⠁\e[41;144H⢔⡃\e[41;237H⠮⠥⠋\e[41;243H\e[39m│\e[42;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m    \e[42;98H\e[38;5;7m│\e[39m│\e[42;141H\e[38;5;15m⣅\e[42;143H⢀⠔⠁\e[42;147H⢀⡀\e[42;198H⠞⠆\e[42;243H\e[39m│\e[43;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m                       \e[43;98H\e[38;5;7m│\e[39m│\e[43;141H\e[38;5;15m⠘⠶⣎⢧⣀\e[43;147H⠉⠁\e[43;243H\e[39m│\e[44;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[44;98H\e[38;5;7m│\e[39m│\e[44;144H\e[38;5;15m⠁\e[44;243H\e[39m│\e[45;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m     \e[45;58H       \e[45;98H\e[38;5;7m│\e[39m│\e[45;148H\e[38;5;15m⡀\e[45;243H\e[39m│\e[46;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m      \e[46;98H\e[38;5;7m│\e[39m│\e[46;144H\e[38;5;15m⣀⢴⡾⠉⠉\e[46;190H⣀⡠⠤⢤⣀\e[46;203H⢀⣀⣀⣄⣀⣀⢀⣀⡤⠤⣀⣀⡤⠤⣀⣀⣀⣀⣀⣀⡤⠴⣄⣀⢀⣀⡀\e[46;243H\e[39m│\e[47;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m          \e[47;98H\e[38;5;7m│\e[39m│\e[47;141H\e[38;5;15m⢀⣠⠲⣏⠓⢆\e[47;167H⡀⢀\e[47;170H⣀⢀⣀⣀⠤⣄⠤⡤⠤⢤⣀⣀⠤⠤⠖⠒⠤⠒⠊⠉⠁\e[47;194H⠈⠉⠉⠉⣽⢀⡤⠤⠊⠉\e[47;209H⠁\e[47;229H⠉⠒⠒⠒⠤⠤⣀⣀⣀⡀\e[47;243H\e[39m│\e[48;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m                                     \e[48;98H\e[38;5;7m│\e[39m│\e[48;113H\e[38;5;15m⢀\e[48;115H⣀⣀⣀⣀⣀⡠⣦⣤⣤⠤⠤⢄⣀⣀⣀⣾⣗⠻⠦⠔⠴⠒⠢⠤⠦⠤⠼⠝⠒⠛\e[48;146H⣨⠆\e[48;164H⣠⡖⠊⠈⠁⠉\e[48;171H⠁\e[48;198H⠉⠉\e[48;236H⢀⠠⠞⠁\e[48;243H\e[39m│\e[49;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[49;98H\e[38;5;7m│\e[39m│\e[49;106H\e[38;5;15m⣀⣀⣰⢔⢢⠔⠒⠃⠉\e[49;131H⠁\e[49;140H⡰⢶⠔⠊⠉⠉\e[49;151H⣠⠤⢄⡀\e[49;157H⡤⠤⠒⠒⠒⠉⠉\e[49;235H⡐⣅⡀\e[49;243H\e[39m│\e[50;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m  \e[50;55H            \e[50;98H\e[38;5;7m│\e[39m│\e[50;106H\e[38;5;15m⠈⠁⠁⠢⢤⠣⠛⠃\e[50;140H⠉⠂⠒⠐⠄⠖⠴⢛⣀⡐⡪⠣⠲⠢⠥⠄⠔⠙⠊⠛\e[50;234H⠚⠤⣀⡀\e[50;243H\e[39m│\e[51;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m     \e[51;98H\e[38;5;7m│\e[39m│\e[38;5;15m⠂⠒⠚⠈⠒⠂⠂⠄⠠⠠⠉⠸⠄⠢⠐\e[51;148H⠁\e[51;238H⠁⠑⠐⠐⠐\e[39m│\e[52;3H\e[38;5;15m│                                              │\e[38;5;7m│\e[39m                \e[52;98H\e[38;5;7m│\e[39m│\e[52;243H│\e[53;3H\e[38;5;15m└──────────────────────────────────────────────┘\e[38;5;7m└\e[53;98H┘\e[39m└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 14
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 81
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 98
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 99
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 97
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 104
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 27
+    content: "\e[6;3H\e[38;5;11m┌Menu──────────────────┐\e[38;5;7m┌Whois Lookup────────────────────\e[6;98H─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\e[7;3H\e[38;5;11m│\e[39mDetection             \e[38;5;11m│\e[38;5;7m│\e[39m                            \e[7;66H         \e[7;80H       \e[7;98H  \e[7;243H\e[38;5;7m│\e[8;3H\e[38;5;11m│\e[1mDetails               \e[22m│\e[38;5;7m│\e[1mNetRange: 13.64.0.0 - 13.107.255.255\e[8;66H   \e[8;80H   \e[8;98H                                                                                                                                                 \e[22m│\e[9;3H\e[38;5;11m│\e[39mRelations             \e[38;5;11m│\e[38;5;7m│\e[39mCIDR: 13.64.0.0/11, 13.96.0.0/13,\e[9;62H13.104.0.0/14\e[9;80H   \e[9;98H  \e[9;126H  \e[9;129H          \e[9;140H        \e[9;150H \e[9;152H  \e[9;158H \e[9;161H      \e[9;175H        \e[9;189H   \e[9;207H      \e[9;243H\e[38;5;7m│\e[10;3H\e[38;5;11m│\e[39mCommunity             \e[38;5;11m│\e[38;5;7m│\e[39mNetName: MSFT           \e[10;98H  \e[10;121H                          \e[10;148H \e[10;162H  \e[10;176H      \e[10;193H      \e[10;205H  \e[10;208H         \e[10;225H      \e[10;243H\e[38;5;7m│\e[11;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mNetHandle: NET-13-64-0-0-1\e[11;98H   \e[11;107H     \e[11;120H                         \e[11;149H  \e[11;161H   \e[11;180H    \e[11;191H    \e[11;197H         \e[11;214H   \e[11;218H \e[11;220H         \e[11;230H  \e[11;233H  \e[11;241H  \e[38;5;7m│\e[12;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mParent: NET13 (NET-13-0-0-0-0)\e[12;98H      \e[12;105H  \e[12;112H                               \e[12;144H   \e[12;149H   \e[12;157H      \e[12;164H  \e[12;177H    \e[12;183H   \e[12;187H    \e[12;192H         \e[12;234H         \e[38;5;7m│\e[13;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mNetType: Direct Allocation\e[13;98H          \e[13;134H             \e[13;150H \e[13;154H   \e[13;161H     \e[13;173H    \e[13;178H    \e[13;185H    \e[13;199H \e[13;235H  \e[13;241H  \e[38;5;7m│\e[14;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOriginAS:               \e[14;98H  \e[14;104H            \e[14;133H  \e[14;138H        \e[14;151H    \e[14;169H  \e[14;173H \e[14;175H \e[14;177H      \e[14;227H  \e[14;230H           \e[14;242H \e[38;5;7m│\e[15;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrganization: Microsoft Corporation\e[15;64H(MSFT)\e[15;98H  \e[15;106H      \e[15;116H    \e[15;134H       \e[15;144H \e[15;146H   \e[15;167H    \e[15;174H       \e[15;224H   \e[15;232H  \e[15;235H \e[15;243H\e[38;5;7m│\e[16;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mRegDate: 2015-03-26     \e[16;98H  \e[16;105H  \e[16;118H   \e[16;138H   \e[16;147H   \e[16;167H             \e[16;225H    \e[16;232H   \e[16;243H\e[38;5;7m│\e[17;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mUpdated: 2021-12-14     \e[17;98H  \e[17;120H   \e[17;143H        \e[17;168H    \e[17;186H \e[17;191H  \e[17;226H   \e[17;243H\e[38;5;7m│\e[18;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mRef: https://rdap.arin.net/registry/ip/13.64.0.0\e[18;98H  \e[18;122H \e[18;143H     \e[18;150H \e[18;167H    \e[18;172H       \e[18;182H      \e[18;189H    \e[18;223H      \e[18;243H\e[38;5;7m│\e[19;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgName: Microsoft Corporation\e[19;98H  \e[19;121H  \e[19;141H   \e[19;167H \e[19;171H  \e[19;174H              \e[19;190H   \e[19;217H       \e[19;226H  \e[19;243H\e[38;5;7m│\e[20;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgId: MSFT             \e[20;98H  \e[20;122H  \e[20;140H  \e[20;167H           \e[20;179H       \e[20;190H   \e[20;217H           \e[20;243H\e[38;5;7m│\e[21;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mAddress: One Microsoft Way\e[21;98H  \e[21;123H    \e[21;139H   \e[21;167H  \e[21;175H   \e[21;179H       \e[21;218H  \e[21;221H      \e[21;243H\e[38;5;7m│\e[22;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mCity: Redmond           \e[22;98H  \e[22;125H   \e[22;132H        \e[22;166H  \e[22;178H \e[22;182H    \e[22;190H    \e[22;218H  \e[22;243H\e[38;5;7m│\e[23;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mStateProv: WA           \e[23;98H  \e[23;126H   \e[23;132H \e[23;138H   \e[23;164H  \e[23;184H   \e[23;191H        \e[23;217H   \e[23;243H\e[38;5;7m│\e[24;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mPostalCode: 98052       \e[24;98H  \e[24;107H   \e[24;127H \e[24;129H \e[24;132H  \e[24;135H         \e[24;164H \e[24;185H   \e[24;194H \e[24;198H   \e[24;204H     \e[24;213H       \e[24;243H\e[38;5;7m│\e[25;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mCountry: US             \e[25;98H  \e[25;109H \e[25;130H         \e[25;140H      \e[25;164H \e[25;186H   \e[25;191H    \e[25;200H \e[25;203H  \e[25;208H  \e[25;213H  \e[25;218H  \e[25;243H\e[38;5;7m│\e[26;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mRegDate: 1998-07-10     \e[26;98H  \e[26;134H     \e[26;142H  \e[26;164H  \e[26;187H     \e[26;200H    \e[26;209H   \e[26;214H \e[26;218H   \e[26;243H\e[38;5;7m│\e[27;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mUpdated: 2022-03-28     \e[27;98H  \e[27;137H           \e[27;165H  \e[27;188H    \e[27;201H   \e[27;210H     \e[27;217H     \e[27;243H\e[38;5;7m│\e[28;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: To report suspected\e[28;57Hsecurity\e[28;66Hissues\e[28;73Hspecific\e[28;82Hto\e[28;85Htraffic\e[28;93Hemanating\e[28;103Hfrom\e[28;108HMicrosoft\e[28;118Honline\e[28;125Hser\e[28;139H  \e[28;148H    \e[28;166H         \e[28;190H \e[28;202H  \e[28;208H     \e[28;216H      \e[28;243H\e[38;5;7m│\e[29;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: * https://cert.microsoft.com.\e[29;98H  \e[29;139H  \e[29;151H  \e[29;174H  \e[29;188H  \e[29;209H    \e[29;214H  \e[29;217H       \e[29;243H\e[38;5;7m│\e[30;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment:                \e[30;98H  \e[30;139H \e[30;152H     \e[30;174H  \e[30;186H  \e[30;210H                   \e[30;230H  \e[30;243H\e[38;5;7m│\e[31;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: For SPAM and other\e[31;56Habuse\e[31;62Hissues,\e[31;70Hsuch\e[31;75Has\e[31;78HMicrosoft\e[31;88HAccounts,\e[31;98Hplease\e[31;105Hcontact:\e[31;139H \e[31;156H  \e[31;175H  \e[31;186H \e[31;212H          \e[31;224H           \e[31;243H\e[38;5;7m│\e[32;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: * abuse@microsoft.com.\e[32;98H  \e[32;139H  \e[32;156H  \e[32;176H \e[32;186H  \e[32;190H \e[32;215H       \e[32;223H        \e[32;234H  \e[32;243H\e[38;5;7m│\e[33;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment:                \e[33;98H   \e[33;140H  \e[33;155H  \e[33;175H  \e[33;187H     \e[33;220H      \e[33;227H  \e[33;237H \e[33;242H \e[38;5;7m│\e[34;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: To report security\e[34;56Hvulnerabilities\e[34;72Hin\e[34;75HMicrosoft\e[34;85Hproducts\e[34;94Hand\e[34;98Hservices,\e[34;108Hplease\e[34;115Hcontact:\e[34;142H  \e[34;155H \e[34;175H  \e[34;185H  \e[34;188H \e[34;190H \e[34;218H   \e[34;225H     \e[34;236H  \e[34;241H  \e[38;5;7m│\e[35;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: * secure@microsoft.com.\e[35;98H  \e[35;143H \e[35;152H    \e[35;176H \e[35;184H  \e[35;188H \e[35;190H \e[35;216H   \e[35;230H  \e[35;236H  \e[35;243H\e[38;5;7m│\e[36;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment:                \e[36;98H  \e[36;143H \e[36;151H  \e[36;177H \e[36;184H  \e[36;188H  \e[36;216H \e[36;231H \e[36;243H\e[38;5;7m│\e[37;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: For legal and law\e[37;55Henforcement-related\e[37;75Hrequests,\e[37;85Hplease\e[37;92Hcontact:\e[37;142H \e[37;150H  \e[37;177H  \e[37;183H  \e[37;216H  \e[37;222H  \e[37;231H  \e[37;243H\e[38;5;7m│\e[38;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: * msndcc@microsoft.com\e[38;98H  \e[38;142H \e[38;148H   \e[38;178H     \e[38;216H      \e[38;223H    \e[38;230H  \e[38;239H  \e[38;243H\e[38;5;7m│\e[39;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment:                \e[39;98H  \e[39;142H \e[39;146H   \e[39;226H     \e[39;240H  \e[39;243H\e[38;5;7m│\e[40;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: For routing, peering\e[40;58Hor\e[40;61HDNS\e[40;65Hissues,\e[40;73Hplease\e[40;98H  \e[40;141H  \e[40;145H  \e[40;228H  \e[40;238H    \e[40;243H\e[38;5;7m│\e[41;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: contact:       \e[41;98H  \e[41;141H  \e[41;144H  \e[41;237H   \e[41;243H\e[38;5;7m│\e[42;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mComment: * IOC@microsoft.com\e[42;98H  \e[42;141H \e[42;143H   \e[42;147H  \e[42;198H  \e[42;243H\e[38;5;7m│\e[43;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mRef: https://rdap.arin.net/registry/entity/MSFT\e[43;98H  \e[43;141H     \e[43;147H  \e[43;243H\e[38;5;7m│\e[44;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgAbuseHandle: MAC74-ARIN\e[44;98H  \e[44;144H \e[44;243H\e[38;5;7m│\e[45;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgAbuseName: Microsoft Abuse\e[45;58HContact\e[45;98H  \e[45;148H \e[45;243H\e[38;5;7m│\e[46;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgAbusePhone: +1-425-882-8080\e[46;98H  \e[46;144H     \e[46;190H     \e[46;203H                           \e[46;243H\e[38;5;7m│\e[47;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgAbuseEmail: abuse@microsoft.com\e[47;98H  \e[47;141H      \e[47;167H  \e[47;170H                     \e[47;194H          \e[47;209H \e[47;229H          \e[47;243H\e[38;5;7m│\e[48;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgAbuseRef: https://rdap.arin.net/registry/entity/MAC74-ARIN\e[48;98H  \e[48;113H \e[48;115H                              \e[48;146H  \e[48;164H      \e[48;171H \e[48;198H  \e[48;236H    \e[48;243H\e[38;5;7m│\e[49;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgTechHandle: IPHOS5-ARIN\e[49;98H  \e[49;106H         \e[49;131H \e[49;140H      \e[49;151H    \e[49;157H       \e[49;235H   \e[49;243H\e[38;5;7m│\e[50;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgTechName: IPHostmaster,\e[50;55HIPHostmaster\e[50;98H  \e[50;106H        \e[50;140H                    \e[50;234H    \e[50;243H\e[38;5;7m│\e[51;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgTechPhone: +1-425-538-6637\e[51;98H                 \e[51;148H \e[51;238H     \e[38;5;7m│\e[52;3H\e[38;5;11m│\e[39m                      \e[38;5;11m│\e[38;5;7m│\e[39mOrgTechEmail: iphostmaster@microsoft.com\e[52;98H  \e[52;243H\e[38;5;7m│\e[53;3H\e[38;5;11m└──────────────────────┘\e[38;5;7m└────────────────────────\e[53;98H─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 11
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 86
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 102
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 101
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
+  - delay: 100
+    content: "\e[39m\e[49m\e[0m\e[?25l\e[?25l\e[4;15H"
