@@ -37,7 +37,7 @@
 First, install [Rust](https://www.rust-lang.org/tools/install) (using the recommended rustup installation method) and then
 
 ```
-cargo install spotify-tui
+cargo install osintui
 ```
 
 ## Configuration
