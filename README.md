@@ -40,4 +40,4 @@ The software architecture is almost entirely modeled after spotify-tui. The code
 
 ⭐ [wtfis](https://github.com/pirxthepilot/wtfis)
 
-I needed a good first project to leanr rust and wtfis was the primary source of inspiration for osintui.
+I needed a good first project to learn rust and wtfis was the primary source of inspiration for osintui.
