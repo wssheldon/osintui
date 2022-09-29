@@ -42,7 +42,7 @@ cargo install osintui
 
 ## Configuration
 
-osintui expects a TOML configuration file stored at `~/.osintui/config/config.toml` that sets the necessary API tokens for each support service. The configuration file will be created for you on first run if one was not found.
+osintui expects a TOML configuration file stored at `~/.osintui/config/config.toml` that sets the necessary API tokens for each service. The configuration file will be created for you on first run if one was not found.
 
 ```toml
 [keys]
