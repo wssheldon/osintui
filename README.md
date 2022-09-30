@@ -58,7 +58,7 @@ shodan = "api_key"
 | /           | Input       |
 | q           | Back        |
 | s           | Shodan      |
-| v           | VirusToal   |
+| v           | VirusTotal   |
 | →           | Move Right  |
 | ←           | Move Left   |
 | ↑           | Move Up     |
