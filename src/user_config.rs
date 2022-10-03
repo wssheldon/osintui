@@ -71,3 +71,9 @@ impl UserConfig {
         }
     }
 }
+
+impl Default for UserConfig {
+    fn default() -> Self {
+        Self::new()
+    }
+}

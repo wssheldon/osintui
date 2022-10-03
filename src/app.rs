@@ -1,6 +1,6 @@
 use super::config::Config;
 use super::user_config::UserConfig;
-use crate::clients::shodan::{ServiceData, ShodanSearchIp};
+use crate::clients::shodan::{Location, ServiceData, ShodanSearchIp};
 use crate::clients::virustotal::{AnalysisStats, Attributes, Data, IpAddress, Votes};
 use crate::network::IoEvent;
 use std::collections::HashMap;
@@ -15,14 +15,15 @@ const DEFAULT_ROUTE: Route = Route {
 
 #[derive(Clone, PartialEq, Debug)]
 pub enum RouteId {
-    Error,
     Home,
     Search,
     SearchResult,
     Shodan,
-    Unloaded,
+    ShodanGeoLookup,
     VirustotalDetection,
     VirustotalDetails,
+    Unloaded,
+    Error,
 }
 
 pub const VIRUSTOTAL_MENU: [&str; 2] = ["Detection", "Details"];
@@ -35,8 +36,11 @@ pub struct Virustotal {
     pub ip_whois_items: IpAddress,
 }
 
+pub const SHODAN_MENU: [&str; 2] = ["General", "Geo-Lookup"];
+
 pub struct Shodan {
     pub service_index: usize,
+    pub menu_index: usize,
     pub search_ip_items: ShodanSearchIp,
 }
 
@@ -58,7 +62,7 @@ pub enum ActiveBlock {
     SearchResult,
     Home,
     Input,
-    Shodan,
+    ShodanMenu,
     ShodanUnloaded,
     ShodanServices,
     VirustotalMenu,
@@ -76,10 +80,6 @@ pub struct App {
     pub is_loading: bool,
     pub is_input_error: bool,
     pub api_error: String,
-    pub help_menu_page: u32,
-    pub help_menu_offset: u32,
-    pub help_docs_size: u32,
-    pub help_menu_max_lines: u32,
     pub size: Rect,
     // Inputs:
     // input is the string for input;
@@ -131,6 +131,7 @@ impl Default for App {
             },
             shodan: Shodan {
                 service_index: 0,
+                menu_index: 0,
                 search_ip_items: ShodanSearchIp {
                     ip_str: Some(String::new()),
                     org: String::new(),
@@ -144,6 +145,15 @@ impl Default for App {
                         product: Some(String::new()),
                         transport: Some(String::new()),
                         port: 0,
+                        location: Some(Location {
+                            area_code: Some(0),
+                            city: Some(String::new()),
+                            country_code: Some(String::new()),
+                            country_name: Some(String::new()),
+                            latitude: Some(0.0),
+                            longitude: Some(0.0),
+                            region_code: Some(String::new()),
+                        }),
                     }]),
                     ports: Some(vec![0]),
                     latitude: 0.00,
@@ -163,10 +173,6 @@ impl Default for App {
             input_cursor_position: 0,
             user_config: UserConfig::new(),
             client_config: Config::new(),
-            help_menu_offset: 0,
-            help_menu_page: 0,
-            help_docs_size: 0,
-            help_menu_max_lines: 0,
             size: Rect::default(),
         }
     }

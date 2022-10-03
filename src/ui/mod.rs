@@ -7,7 +7,7 @@ use super::{
     banner::BANNER,
 };
 use crate::ui::{
-    shodan::draw_shodan,
+    shodan::{draw_shodan, draw_shodan_geo_lookup},
     util::get_color,
     virustotal::{draw_virustotal_details, draw_virustotal_detection},
 };
@@ -105,6 +105,9 @@ where
         RouteId::Shodan => {
             draw_shodan(f, app, chunks[0]);
         }
+        RouteId::ShodanGeoLookup => {
+            draw_shodan_geo_lookup(f, app, chunks[0]);
+        }
         RouteId::Error => {} // This is handled as a "full screen" route in main.rs
     };
 }
@@ -178,7 +181,10 @@ where
     };
 
     let block = Block::default()
-        .title(Span::styled("Status", Style::default().fg(help_block_text.0)))
+        .title(Span::styled(
+            "Status",
+            Style::default().fg(help_block_text.0),
+        ))
         .borders(Borders::ALL)
         .border_style(Style::default().fg(help_block_text.0));
 

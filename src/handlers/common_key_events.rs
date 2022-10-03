@@ -51,7 +51,6 @@ pub fn on_up_press_handler<T>(selection_data: &[T], selection_index: Option<usiz
 }
 
 pub fn handle_right_event(app: &mut App) {
-    // TODO:
     match app.get_current_route().hovered_block {
         ActiveBlock::Home | ActiveBlock::Empty => match app.get_current_route().id {
             RouteId::Home => {
@@ -64,6 +63,7 @@ pub fn handle_right_event(app: &mut App) {
             RouteId::VirustotalDetails => {}
             RouteId::Unloaded => {}
             RouteId::Shodan => {}
+            RouteId::ShodanGeoLookup => {}
             RouteId::Error => {}
             RouteId::SearchResult => {}
         },

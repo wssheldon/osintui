@@ -5,7 +5,6 @@ use super::{
 use crate::event::Key;
 
 pub fn handler(key: Key, app: &mut App) {
-    // TODO: Add helper function to app
     let results: Vec<&str> = app
         .virustotal
         .ip_whois_items

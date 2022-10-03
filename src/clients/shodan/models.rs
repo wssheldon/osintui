@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct ShodanSearchIp {
     #[serde(rename = "ip_str")]
     pub ip_str: Option<String>,
@@ -21,13 +20,24 @@ pub struct ShodanSearchIp {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct ServiceData {
     #[serde(rename = "data")]
     pub service: Option<String>,
     pub product: Option<String>,
     pub port: i32,
     pub transport: Option<String>,
+    pub location: Option<Location>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct Location {
+    pub area_code: Option<usize>,
+    pub city: Option<String>,
+    pub country_code: Option<String>,
+    pub country_name: Option<String>,
+    pub latitude: Option<f64>,
+    pub longitude: Option<f64>,
+    pub region_code: Option<String>,
 }
 
 impl ShodanSearchIp {
