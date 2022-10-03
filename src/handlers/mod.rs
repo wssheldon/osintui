@@ -86,6 +86,9 @@ fn handle_block_events(key: Key, app: &mut App) {
         ActiveBlock::Shodan => {
             shodan::handler(key, app);
         }
+        ActiveBlock::ShodanMenu => {
+            shodan::handler(key, app);
+        }
         ActiveBlock::ShodanServices => {
             shodan::handler(key, app);
         }

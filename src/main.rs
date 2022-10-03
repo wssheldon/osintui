@@ -99,11 +99,7 @@ async fn start_ui(app: &Arc<Mutex<App>>) -> Result<(), Box<dyn std::error::Error
             terminal.hide_cursor()?;
         }
 
-        let cursor_offset = if app.size.height > ui::util::SMALL_TERMINAL_HEIGHT {
-            3
-        } else {
-            3
-        };
+        let cursor_offset = 3;
 
         // Put the cursor back inside the input box
         terminal.backend_mut().execute(MoveTo(

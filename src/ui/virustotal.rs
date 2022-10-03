@@ -1,4 +1,4 @@
-use super::super::app::{ActiveBlock, App};
+use super::super::app::{ActiveBlock, App, VIRUSTOTAL_MENU};
 use crate::clients::virustotal::AnalysisResult;
 use crate::ui::util::{get_color, get_percentage_width};
 use crate::ui::{draw_selectable_list, draw_table, TableHeader, TableHeaderItem, TableItem};
@@ -21,14 +21,12 @@ where
         current_route.hovered_block == ActiveBlock::VirustotalMenu,
     );
 
-    let menu_list = ["Detection", "Details", "Relations", "Community"];
-
     draw_selectable_list(
         f,
         app,
         layout_chunk,
         "Menu",
-        &menu_list,
+        &VIRUSTOTAL_MENU,
         highlight_state,
         Some(app.virustotal.selected_index),
     );
@@ -127,12 +125,10 @@ where
             TableHeaderItem {
                 text: "Engine",
                 width: get_percentage_width(layout_chunk.width, 0.3),
-                ..Default::default()
             },
             TableHeaderItem {
                 text: "Result",
                 width: get_percentage_width(layout_chunk.width, 0.3),
-                ..Default::default()
             },
         ],
     };
@@ -214,7 +210,6 @@ where
         items: vec![TableHeaderItem {
             text: "",
             width: 100,
-            ..Default::default()
         }],
     };
 
