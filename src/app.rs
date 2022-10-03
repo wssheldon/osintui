@@ -62,7 +62,6 @@ pub enum ActiveBlock {
     SearchResult,
     Home,
     Input,
-    Shodan,
     ShodanMenu,
     ShodanUnloaded,
     ShodanServices,

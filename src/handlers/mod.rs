@@ -42,7 +42,7 @@ pub fn handle_app(key: Key, app: &mut App) {
             if app.client_config.keys.shodan.is_empty() {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::ShodanUnloaded);
             } else {
-                app.push_navigation_stack(RouteId::Shodan, ActiveBlock::Shodan);
+                app.push_navigation_stack(RouteId::Shodan, ActiveBlock::ShodanMenu);
             }
         }
         _ => handle_block_events(key, app),
@@ -82,9 +82,6 @@ fn handle_block_events(key: Key, app: &mut App) {
         }
         ActiveBlock::VirustotalUnloaded => {
             unloaded::handler(key, app);
-        }
-        ActiveBlock::Shodan => {
-            shodan::handler(key, app);
         }
         ActiveBlock::ShodanMenu => {
             shodan::handler(key, app);

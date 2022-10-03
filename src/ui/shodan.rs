@@ -83,7 +83,7 @@ where
                 .title("🌐 General Information")
                 .border_type(BorderType::Plain),
         )
-        .widths(&[Constraint::Length(20), Constraint::Length(20)]);
+        .widths(&[Constraint::Length(20), Constraint::Percentage(100)]);
 
     f.render_widget(summary, layout_chunk);
 }
