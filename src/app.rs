@@ -1,7 +1,10 @@
 use super::config::Config;
 use super::user_config::UserConfig;
 use crate::clients::shodan::{Location, ServiceData, ShodanSearchIp};
-use crate::clients::virustotal::{AnalysisStats, Attributes, Data, IpAddress, Votes};
+use crate::clients::virustotal::{
+    AnalysisStats, CommentVotes, IpAddress, IpAttributes, IpCommentAttributes, IpCommentData,
+    IpComments, IpData, Votes,
+};
 use crate::network::IoEvent;
 use std::collections::HashMap;
 use std::sync::mpsc::Sender;
@@ -22,11 +25,12 @@ pub enum RouteId {
     ShodanGeoLookup,
     VirustotalDetection,
     VirustotalDetails,
+    VirustotalCommunity,
     Unloaded,
     Error,
 }
 
-pub const VIRUSTOTAL_MENU: [&str; 2] = ["Detection", "Details"];
+pub const VIRUSTOTAL_MENU: [&str; 3] = ["Detection", "Details", "Community"];
 
 pub struct Virustotal {
     pub selected_index: usize,
@@ -34,6 +38,8 @@ pub struct Virustotal {
     pub whois_result_index: usize,
     pub scan_table: ScanTable,
     pub ip_whois_items: IpAddress,
+    pub ip_comment_items: IpComments,
+    pub comment_scroll: u16,
 }
 
 pub const SHODAN_MENU: [&str; 2] = ["General", "Geo-Lookup"];
@@ -69,6 +75,7 @@ pub enum ActiveBlock {
     VirustotalSummary,
     VirustotalResults,
     VirustotalWhois,
+    VirustotalComments,
     VirustotalUnloaded,
 }
 
@@ -103,10 +110,11 @@ impl Default for App {
                 selected_index: 0,
                 analysis_result_index: 0,
                 whois_result_index: 0,
+                comment_scroll: 0,
                 scan_table: ScanTable { selected_index: 0 },
                 ip_whois_items: IpAddress {
-                    data: Data {
-                        attributes: Attributes {
+                    data: IpData {
+                        attributes: IpAttributes {
                             as_owner: String::new(),
                             asn: 0,
                             continent: String::new(),
@@ -127,6 +135,21 @@ impl Default for App {
                         },
                         id: String::new(),
                     },
+                },
+                ip_comment_items: IpComments {
+                    data: vec![IpCommentData {
+                        id: Some(String::new()),
+                        attributes: IpCommentAttributes {
+                            date: 0,
+                            html: String::new(),
+                            text: String::new(),
+                            votes: CommentVotes {
+                                abuse: 0,
+                                negative: 0,
+                                positive: 0,
+                            },
+                        },
+                    }],
                 },
             },
             shodan: Shodan {

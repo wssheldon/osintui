@@ -22,8 +22,8 @@ pub fn handler(key: Key, app: &mut App) {
             match app.get_current_route().hovered_block {
                 ActiveBlock::VirustotalResults => {
                     app.set_current_route_state(
-                        Some(ActiveBlock::VirustotalSummary),
-                        Some(ActiveBlock::VirustotalSummary),
+                        Some(ActiveBlock::VirustotalMenu),
+                        Some(ActiveBlock::VirustotalMenu),
                     );
                 }
                 _ => {}

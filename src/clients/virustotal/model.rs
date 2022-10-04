@@ -2,20 +2,18 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct IpAddress {
-    pub data: Data,
+    pub data: IpData,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Data {
-    pub attributes: Attributes,
+pub struct IpData {
+    pub attributes: IpAttributes,
     pub id: String,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct Attributes {
+pub struct IpAttributes {
     pub as_owner: String,
     pub whois: String,
     pub asn: i32,
@@ -27,7 +25,6 @@ pub struct Attributes {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct AnalysisResult {
     #[serde(rename = "engine_name")]
     pub engine_name: String,
@@ -35,7 +32,6 @@ pub struct AnalysisResult {
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct Votes {
     pub harmless: i32,
     pub malicious: i32,
@@ -48,4 +44,30 @@ pub struct AnalysisStats {
     pub suspicious: i32,
     pub timeout: i32,
     pub undetected: i32,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct IpComments {
+    pub data: Vec<IpCommentData>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct IpCommentData {
+    pub attributes: IpCommentAttributes,
+    pub id: Option<String>,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct IpCommentAttributes {
+    pub date: usize,
+    pub html: String,
+    pub text: String,
+    pub votes: CommentVotes,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct CommentVotes {
+    pub abuse: i32,
+    pub negative: i32,
+    pub positive: i32,
 }

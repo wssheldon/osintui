@@ -61,6 +61,7 @@ pub fn handle_right_event(app: &mut App) {
             }
             RouteId::VirustotalDetection => {}
             RouteId::VirustotalDetails => {}
+            RouteId::VirustotalCommunity => {}
             RouteId::Unloaded => {}
             RouteId::Shodan => {}
             RouteId::ShodanGeoLookup => {}

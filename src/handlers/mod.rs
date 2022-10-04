@@ -7,6 +7,7 @@ mod search_result;
 mod shodan;
 mod unloaded;
 mod virustotal;
+mod virustotal_comments;
 mod virustotal_results;
 mod virustotal_summary;
 mod virustotal_whois;
@@ -79,6 +80,9 @@ fn handle_block_events(key: Key, app: &mut App) {
         }
         ActiveBlock::VirustotalWhois => {
             virustotal_whois::handler(key, app);
+        }
+        ActiveBlock::VirustotalComments => {
+            virustotal_comments::handler(key, app);
         }
         ActiveBlock::VirustotalUnloaded => {
             unloaded::handler(key, app);

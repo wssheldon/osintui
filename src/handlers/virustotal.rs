@@ -23,6 +23,12 @@ pub fn handler(key: Key, app: &mut App) {
                                 Some(ActiveBlock::VirustotalWhois),
                             );
                         }
+                        RouteId::VirustotalCommunity => {
+                            app.set_current_route_state(
+                                Some(ActiveBlock::VirustotalComments),
+                                Some(ActiveBlock::VirustotalComments),
+                            );
+                        }
                         _ => {}
                     }
                 }
@@ -69,6 +75,7 @@ fn switch_view(app: &mut App) {
     match app.virustotal.selected_index {
         0 => app.push_navigation_stack(RouteId::VirustotalDetection, ActiveBlock::VirustotalMenu),
         1 => app.push_navigation_stack(RouteId::VirustotalDetails, ActiveBlock::VirustotalMenu),
+        2 => app.push_navigation_stack(RouteId::VirustotalCommunity, ActiveBlock::VirustotalMenu),
         _ => {}
     }
 }
