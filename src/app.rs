@@ -2,8 +2,8 @@ use super::config::Config;
 use super::user_config::UserConfig;
 use crate::clients::shodan::{Location, ServiceData, ShodanSearchIp};
 use crate::clients::virustotal::{
-    AnalysisStats, CommentVotes, IpAddress, IpAttributes, IpCommentAttributes, IpCommentData,
-    IpComments, IpData, Votes, CommentAuthor, CommentAttributes,
+    AnalysisStats, CommentAttributes, CommentAuthor, CommentVotes, IpAddress, IpAttributes,
+    IpCommentAttributes, IpCommentData, IpComments, IpData, Votes,
 };
 use crate::network::IoEvent;
 use std::collections::HashMap;
@@ -152,16 +152,16 @@ impl Default for App {
                         },
                     }],
                 },
-                comment_authors: CommentAuthor { 
+                comment_authors: CommentAuthor {
                     data: CommentAttributes {
                         first_name: String::new(),
                         last_name: String::new(),
                         profile_phrase: String::new(),
                         status: String::new(),
                         user_since: 0,
-                    }, 
+                    },
                     id: String::new(),
-                }
+                },
             },
             shodan: Shodan {
                 service_index: 0,

@@ -33,7 +33,10 @@ impl Client {
         res
     }
 
-    pub async fn get_comment_author(&self, comment_id: &str) -> Result<CommentAuthor, reqwest::StatusCode> {
+    pub async fn get_comment_author(
+        &self,
+        comment_id: &str,
+    ) -> Result<CommentAuthor, reqwest::StatusCode> {
         let url = format!("{}/comments/{}/author", BASE_URL, comment_id);
 
         let res: Result<CommentAuthor, reqwest::StatusCode> =
