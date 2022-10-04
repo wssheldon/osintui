@@ -8,6 +8,7 @@ use tokio::sync::Mutex;
 #[derive(Debug)]
 pub enum IoEvent {
     VirusTotal(String),
+    VirustotalComments(String),
     Shodan(String),
 }
 
@@ -39,6 +40,9 @@ impl<'a> Network<'a> {
             IoEvent::VirusTotal(query) => {
                 self.virustotal_get_ip_whois(query).await;
             }
+            IoEvent::VirustotalComments(query) => {
+                self.virustotal_get_ip_comments(query).await;
+            }
             IoEvent::Shodan(query) => {
                 self.shodan_search_ip(query).await;
             }
@@ -58,6 +62,18 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.ip_whois_items = resp;
+            }
+            Err(e) => {
+                self.handle_error(anyhow!(e)).await;
+            }
+        }
+    }
+
+    async fn virustotal_get_ip_comments(&mut self, ip: String) {
+        match self.vt_client.get_ip_comments(ip.as_str()).await {
+            Ok(resp) => {
+                let mut app = self.app.lock().await;
+                app.virustotal.ip_comment_items = resp;
             }
             Err(e) => {
                 self.handle_error(anyhow!(e)).await;

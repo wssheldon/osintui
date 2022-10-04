@@ -2,12 +2,13 @@ use super::super::app::{ActiveBlock, App, VIRUSTOTAL_MENU};
 use crate::clients::virustotal::AnalysisResult;
 use crate::ui::util::{get_color, get_percentage_width};
 use crate::ui::{draw_selectable_list, draw_table, TableHeader, TableHeaderItem, TableItem};
+use chrono::prelude::NaiveDateTime;
 use tui::{
     backend::Backend,
     layout::{Alignment, Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style},
     text::{Span, Spans},
-    widgets::{Block, BorderType, Borders, Paragraph},
+    widgets::{Block, BorderType, Borders, Paragraph, Wrap},
     Frame,
 };
 
@@ -242,4 +243,58 @@ where
         app.virustotal.whois_result_index,
         highlight_state,
     );
+}
+
+pub fn draw_virustotal_community<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+where
+    B: Backend,
+{
+    let chunks = Layout::default()
+        .direction(Direction::Horizontal)
+        .constraints([Constraint::Percentage(10), Constraint::Percentage(90)].as_ref())
+        .split(layout_chunk);
+
+    draw_virustotal_menu(f, app, chunks[0]);
+    draw_virustotal_comments(f, app, chunks[1]);
+}
+
+pub fn draw_virustotal_comments<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+where
+    B: Backend,
+{
+    let current_route = app.get_current_route();
+    let highlight_state = (
+        current_route.active_block == ActiveBlock::VirustotalComments,
+        current_route.hovered_block == ActiveBlock::VirustotalComments,
+    );
+
+    let mut comments = Vec::new();
+
+    for comment in app.virustotal.ip_comment_items.data.iter() {
+        // Conver from Epoch time to 1900-01-01 00:00:00 format
+        let date = NaiveDateTime::from_timestamp(comment.attributes.date.try_into().unwrap(), 0);
+        comments.push(Spans::from(vec![Span::raw(format!("{}", date))]));
+
+        // Comments with new lines need to be split and handled as a new span per line
+        let lines = comment.attributes.text.split("\n").collect::<Vec<&str>>();
+        for line in lines.iter() {
+            comments.push(Spans::from(vec![Span::raw(format!("{}", line))]));
+        }
+
+        // Add a space between the end of a comment and a new date
+        comments.push(Spans::from(vec![Span::raw("")]));
+    }
+
+    let comment_paragraph = Paragraph::new(comments)
+        .style(Style::default().fg(app.user_config.theme.text))
+        .block(
+            Block::default()
+                .borders(Borders::ALL)
+                .title("Comments")
+                .style(get_color(highlight_state)),
+        )
+        .wrap(Wrap { trim: false })
+        .scroll((app.virustotal.comment_scroll, 0));
+
+    f.render_widget(comment_paragraph, layout_chunk);
 }

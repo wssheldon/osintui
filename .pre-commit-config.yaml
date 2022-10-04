@@ -1,0 +1,17 @@
+# brew install pre-commit
+# run pre-commit install to set up the git hook scripts
+# now pre-commit will run automatically on git commit!
+
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+
+-   repo: https://github.com/doublify/pre-commit-rust
+    rev: master
+    hooks:
+    -   id: fmt
+    -   id: clippy
+    -   id: cargo-check

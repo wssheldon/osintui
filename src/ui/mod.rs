@@ -9,7 +9,7 @@ use super::{
 use crate::ui::{
     shodan::{draw_shodan, draw_shodan_geo_lookup},
     util::get_color,
-    virustotal::{draw_virustotal_details, draw_virustotal_detection},
+    virustotal::{draw_virustotal_community, draw_virustotal_details, draw_virustotal_detection},
 };
 use tui::{
     backend::Backend,
@@ -98,6 +98,9 @@ where
         }
         RouteId::VirustotalDetails => {
             draw_virustotal_details(f, app, chunks[0]);
+        }
+        RouteId::VirustotalCommunity => {
+            draw_virustotal_community(f, app, chunks[0]);
         }
         RouteId::Unloaded => {
             draw_unloaded(f, app, chunks[0]);
@@ -252,10 +255,8 @@ where
     ])
     .style(Style::default().fg(app.user_config.theme.text))
     .alignment(Alignment::Center)
-    .scroll((app.home_scroll, 0))
     .block(Block::default())
-    .wrap(Wrap { trim: false })
-    .scroll((app.home_scroll, 0));
+    .wrap(Wrap { trim: false });
 
     f.render_widget(home, chunks[1]);
 }
@@ -326,7 +327,7 @@ where
         .margin(5)
         .split(f.size());
 
-    let playing_text = vec![
+    let error_text = vec![
         Spans::from(vec![
             Span::raw("Api response: "),
             Span::styled(
@@ -340,7 +341,7 @@ where
         )),
     ];
 
-    let playing_paragraph = Paragraph::new(playing_text)
+    let error_paragraph = Paragraph::new(error_text)
         .wrap(Wrap { trim: true })
         .style(Style::default().fg(app.user_config.theme.text))
         .block(
@@ -352,7 +353,7 @@ where
                 ))
                 .border_style(Style::default().fg(app.user_config.theme.error_border)),
         );
-    f.render_widget(playing_paragraph, chunks[0]);
+    f.render_widget(error_paragraph, chunks[0]);
 }
 
 fn draw_selectable_list<B, S>(

@@ -109,7 +109,8 @@ fn process_input(app: &mut App, input: String) {
     }
 
     if !app.client_config.keys.virustotal.is_empty() {
-        app.dispatch(IoEvent::VirusTotal(ip));
+        app.dispatch(IoEvent::VirusTotal(ip.clone()));
+        app.dispatch(IoEvent::VirustotalComments(ip));
     }
 
     app.push_navigation_stack(RouteId::SearchResult, ActiveBlock::SearchResult);
