@@ -113,9 +113,7 @@ fn process_input(app: &mut App, input: String) {
         app.dispatch(IoEvent::VirustotalComments(ip));
     }
 
-    if !app.is_loading == true {
-        app.push_navigation_stack(RouteId::SearchResult, ActiveBlock::SearchResult);
-    }
+    app.push_navigation_stack(RouteId::SearchResult, ActiveBlock::SearchResult);
 }
 
 fn is_ip_addr(input: String) -> bool {
