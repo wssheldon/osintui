@@ -3,7 +3,7 @@ use super::user_config::UserConfig;
 use crate::clients::shodan::{Location, ServiceData, ShodanSearchIp};
 use crate::clients::virustotal::{
     AnalysisStats, CommentVotes, IpAddress, IpAttributes, IpCommentAttributes, IpCommentData,
-    IpComments, IpData, Votes,
+    IpComments, IpData, Votes, CommentAuthor, CommentAttributes,
 };
 use crate::network::IoEvent;
 use std::collections::HashMap;
@@ -39,6 +39,7 @@ pub struct Virustotal {
     pub scan_table: ScanTable,
     pub ip_whois_items: IpAddress,
     pub ip_comment_items: IpComments,
+    pub comment_authors: CommentAuthor,
     pub comment_scroll: u16,
 }
 
@@ -138,7 +139,7 @@ impl Default for App {
                 },
                 ip_comment_items: IpComments {
                     data: vec![IpCommentData {
-                        id: Some(String::new()),
+                        id: String::new(),
                         attributes: IpCommentAttributes {
                             date: 0,
                             html: String::new(),
@@ -151,6 +152,16 @@ impl Default for App {
                         },
                     }],
                 },
+                comment_authors: CommentAuthor { 
+                    data: CommentAttributes {
+                        first_name: String::new(),
+                        last_name: String::new(),
+                        profile_phrase: String::new(),
+                        status: String::new(),
+                        user_since: 0,
+                    }, 
+                    id: String::new(),
+                }
             },
             shodan: Shodan {
                 service_index: 0,

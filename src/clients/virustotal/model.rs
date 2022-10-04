@@ -54,7 +54,7 @@ pub struct IpComments {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct IpCommentData {
     pub attributes: IpCommentAttributes,
-    pub id: Option<String>,
+    pub id: String,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -70,4 +70,19 @@ pub struct CommentVotes {
     pub abuse: i32,
     pub negative: i32,
     pub positive: i32,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct CommentAuthor {
+    pub data: CommentAttributes,
+    pub id: String,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct CommentAttributes {
+    pub first_name: String,
+    pub last_name: String,
+    pub profile_phrase: String,
+    pub status: String,
+    pub user_since: usize,
 }
