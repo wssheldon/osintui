@@ -273,9 +273,10 @@ where
     for comment in app.virustotal.ip_comment_items.data.iter() {
         // Conver from Epoch time to 1900-01-01 00:00:00 format
         let date = NaiveDateTime::from_timestamp(comment.attributes.date.try_into().unwrap(), 0);
-        comments.push(Spans::from(
-            vec![Span::styled(format!("{}", date), Style::default().add_modifier(Modifier::BOLD))]
-        ));
+        comments.push(Spans::from(vec![Span::styled(
+            format!("{}", date),
+            Style::default().add_modifier(Modifier::BOLD),
+        )]));
 
         // Comments with new lines need to be split and handled as a new span per line
         let lines = comment.attributes.text.split("\n").collect::<Vec<&str>>();
@@ -286,8 +287,6 @@ where
         // Add a space between the end of a comment and a new date
         comments.push(Spans::from(vec![Span::raw("")]));
     }
-
-    
 
     let comment_paragraph = Paragraph::new(comments)
         .style(Style::default().fg(app.user_config.theme.text))
