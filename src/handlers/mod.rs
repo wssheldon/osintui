@@ -33,6 +33,10 @@ pub fn handle_app(key: Key, app: &mut App) {
             if app.client_config.keys.virustotal.is_empty() {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::VirustotalUnloaded);
             } else {
+                // Reset the menu index with switching to the view
+                app.virustotal.selected_index = 0;
+
+                // Switch to the main Virustotal view
                 app.push_navigation_stack(
                     RouteId::VirustotalDetection,
                     ActiveBlock::VirustotalMenu,
@@ -43,6 +47,10 @@ pub fn handle_app(key: Key, app: &mut App) {
             if app.client_config.keys.shodan.is_empty() {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::ShodanUnloaded);
             } else {
+                // Reset the menu index with switching to the view
+                app.shodan.menu_index = 0;
+
+                // Switch to the main Shodan view
                 app.push_navigation_stack(RouteId::Shodan, ActiveBlock::ShodanMenu);
             }
         }

@@ -9,6 +9,7 @@ use tokio::sync::Mutex;
 pub enum IoEvent {
     VirusTotal(String),
     VirustotalComments(String),
+    VirustotalCommentAuthor(String),
     Shodan(String),
 }
 
@@ -41,7 +42,10 @@ impl<'a> Network<'a> {
                 self.virustotal_get_ip_whois(query).await;
             }
             IoEvent::VirustotalComments(query) => {
-                self.virustotal_get_ip_comments(query).await;
+                self.virustotal_get_ip_comments(query.clone()).await;
+            }
+            IoEvent::VirustotalCommentAuthor(query) => {
+                self.virustotal_get_comment_author(query.clone()).await;
             }
             IoEvent::Shodan(query) => {
                 self.shodan_search_ip(query).await;
@@ -74,6 +78,18 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.ip_comment_items = resp;
+            }
+            Err(e) => {
+                self.handle_error(anyhow!(e)).await;
+            }
+        }
+    }
+
+    async fn virustotal_get_comment_author(&mut self, comment_id: String) {
+        match self.vt_client.get_comment_author(&comment_id.as_str()).await {
+            Ok(resp) => {
+                let mut app = self.app.lock().await;
+                app.virustotal.comment_authors = resp;
             }
             Err(e) => {
                 self.handle_error(anyhow!(e)).await;
