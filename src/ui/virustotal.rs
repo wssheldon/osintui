@@ -214,14 +214,10 @@ where
         }],
     };
 
-    let items = match &app.virustotal
-        .ip_whois_items
-        .data
-        .attributes
-        .whois {
-            Some(items) => items.to_string(),
-            None => "N/A".to_string(),
-        };
+    let items = match &app.virustotal.ip_whois_items.data.attributes.whois {
+        Some(items) => items.to_string(),
+        None => "N/A".to_string(),
+    };
 
     let items = items
         .split('\n')
