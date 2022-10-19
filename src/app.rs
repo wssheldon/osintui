@@ -120,7 +120,7 @@ impl Default for App {
                             asn: 0,
                             continent: String::new(),
                             network: String::new(),
-                            whois: String::new(),
+                            whois: Some(String::new()),
                             total_votes: Votes {
                                 harmless: 0,
                                 malicious: 0,

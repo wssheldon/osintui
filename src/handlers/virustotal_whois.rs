@@ -5,14 +5,13 @@ use super::{
 use crate::event::Key;
 
 pub fn handler(key: Key, app: &mut App) {
-    let results: Vec<&str> = app
-        .virustotal
-        .ip_whois_items
-        .data
-        .attributes
-        .whois
-        .split('\n')
-        .collect::<Vec<&str>>();
+    let whois = app.virustotal.ip_whois_items.data.attributes.whois.clone();
+    let results: String = match whois {
+            Some(items) => items.to_string(),
+            None => "No Whois data found.".to_string(),
+        };
+
+    let results = results.split('\n').collect::<Vec<&str>>();
 
     match key {
         k if common_key_events::right_event(k) => {
