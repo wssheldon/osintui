@@ -15,7 +15,7 @@ pub struct IpData {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct IpAttributes {
     pub as_owner: String,
-    pub whois: String,
+    pub whois: Option<String>,
     pub asn: i32,
     pub continent: String,
     pub network: String,
