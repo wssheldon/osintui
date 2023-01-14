@@ -1,3 +1,4 @@
+pub mod censys;
 pub mod shodan;
 pub mod util;
 pub mod virustotal;
@@ -7,6 +8,7 @@ use super::{
     banner::BANNER,
 };
 use crate::ui::{
+    censys::{draw_censys, draw_censys_geo_lookup},
     shodan::{draw_shodan, draw_shodan_geo_lookup},
     util::get_color,
     virustotal::{draw_virustotal_community, draw_virustotal_details, draw_virustotal_detection},
@@ -15,7 +17,9 @@ use tui::{
     backend::Backend,
     layout::{Alignment, Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style},
+    symbols,
     text::{Span, Spans, Text},
+    widgets::canvas::{Canvas, Map, MapResolution},
     widgets::{
         Block, BorderType, Borders, List, ListItem, ListState, Paragraph, Row, Table, Tabs, Wrap,
     },
@@ -93,6 +97,12 @@ where
         RouteId::SearchResult => {
             draw_search_result_page(f, app, chunks[0]);
         }
+        RouteId::Censys => {
+            draw_censys(f, app, chunks[0]);
+        }
+        RouteId::CensysGeoLookup => {
+            draw_censys_geo_lookup(f, app, chunks[0]);
+        }
         RouteId::VirustotalDetection => {
             draw_virustotal_detection(f, app, chunks[0]);
         }
@@ -149,7 +159,7 @@ where
 
     f.render_widget(input, chunks[0]);
 
-    let menu = vec!["Home", "Shodan", "VirusTotal", "Quit"]
+    let menu = vec!["Home", "Shodan", "Virustotal", "Censys", "Quit"]
         .iter()
         .map(|t| {
             let (first, rest) = t.split_at(1);
@@ -278,6 +288,16 @@ where
         Spans::from(vec![Span::raw(format!(
             " {} Virustotal",
             match app.client_config.keys.virustotal.is_empty() {
+                true => "❌",
+                false => "✅",
+            }
+        ))]),
+        Spans::from(vec![Span::raw("")]),
+        Spans::from(vec![Span::raw(format!(
+            " {} Censys",
+            match app.client_config.keys.censys_id.is_empty()
+                && app.client_config.keys.censys_secret.is_empty()
+            {
                 true => "❌",
                 false => "✅",
             }
@@ -450,6 +470,27 @@ fn draw_table<B>(
     f.render_widget(table, layout_chunk);
 }
 
+pub fn draw_map<B>(f: &mut Frame<B>, lat: f64, long: f64, layout_chunk: Rect)
+where
+    B: Backend,
+{
+    let map = Canvas::default()
+        .block(Block::default().title("Geo Lookup").borders(Borders::ALL))
+        .paint(|ctx| {
+            ctx.draw(&Map {
+                color: Color::White,
+                resolution: MapResolution::High,
+            });
+            ctx.layer();
+            ctx.print(long, lat, "X", Color::Red);
+        })
+        .marker(symbols::Marker::Braille)
+        .x_bounds([-180.0, 180.0])
+        .y_bounds([-90.0, 90.0]);
+
+    f.render_widget(map, layout_chunk);
+}
+
 pub fn draw_unloaded<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
@@ -457,6 +498,7 @@ where
     let plugin = match app.get_current_route().active_block {
         ActiveBlock::VirustotalUnloaded => "Virustotal",
         ActiveBlock::ShodanUnloaded => "Shodan",
+        ActiveBlock::CensysUnloaded => "Censys",
         _ => "",
     };
 

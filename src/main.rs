@@ -27,7 +27,7 @@ use tui::{backend::CrosstermBackend, Terminal};
 
 use crate::event::Key;
 use app::{ActiveBlock, App, RouteId};
-use clients::{shodan, virustotal};
+use clients::{censys, shodan, virustotal};
 use config::Config;
 use network::{IoEvent, Network};
 use user_config::UserConfig;
@@ -42,8 +42,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut client_config = Config::new();
     client_config.load_config()?;
 
-    let virustotal = virustotal::Client::new(client_config.keys.virustotal.clone());
+    let censys = censys::Client::new(
+        client_config.keys.censys_id.clone(),
+        client_config.keys.censys_secret.clone(),
+    );
     let shodan = shodan::Client::new(client_config.keys.shodan.clone());
+    let virustotal = virustotal::Client::new(client_config.keys.virustotal.clone());
 
     let (sync_io_tx, sync_io_rx) = std::sync::mpsc::channel::<IoEvent>();
 
@@ -56,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let cloned_app = Arc::clone(&app);
     std::thread::spawn(move || {
-        let mut network = Network::new(virustotal, shodan, client_config, &app);
+        let mut network = Network::new(censys, shodan, virustotal, client_config, &app);
         start_tokio(sync_io_rx, &mut network);
     });
     start_ui(&cloned_app).await?;

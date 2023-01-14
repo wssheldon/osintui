@@ -15,7 +15,7 @@ impl Client {
 
     pub async fn search_ip(&self, ip: &str) -> Result<ShodanSearchIp, reqwest::StatusCode> {
         let url = format!("{}/shodan/host/{}?key={}", BASE_URL, ip, self.api_key);
-        let res: Result<ShodanSearchIp, reqwest::StatusCode> = base::get(url, None).await;
+        let res: Result<ShodanSearchIp, reqwest::StatusCode> = base::get(url, None, None).await;
 
         res
     }

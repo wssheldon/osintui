@@ -19,7 +19,7 @@ impl Client {
         let url = format!("{}/ip_addresses/{}", BASE_URL, ip);
 
         let res: Result<IpAddress, reqwest::StatusCode> =
-            base::get(url, Some(("x-apikey", &self.api_key))).await;
+            base::get(url, Some(("x-apikey", &self.api_key)), None).await;
 
         res
     }
@@ -28,7 +28,7 @@ impl Client {
         let url = format!("{}/ip_addresses/{}/comments", BASE_URL, ip);
 
         let res: Result<IpComments, reqwest::StatusCode> =
-            base::get(url, Some(("x-apikey", &self.api_key))).await;
+            base::get(url, Some(("x-apikey", &self.api_key)), None).await;
 
         res
     }
@@ -40,7 +40,7 @@ impl Client {
         let url = format!("{}/comments/{}/author", BASE_URL, comment_id);
 
         let res: Result<CommentAuthor, reqwest::StatusCode> =
-            base::get(url, Some(("x-apikey", &self.api_key))).await;
+            base::get(url, Some(("x-apikey", &self.api_key)), None).await;
 
         res
     }

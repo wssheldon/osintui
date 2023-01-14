@@ -2,7 +2,11 @@ use reqwest::StatusCode;
 use serde::de::DeserializeOwned;
 
 #[doc(hidden)]
-pub async fn get<T>(url: String, header: Option<(&str, &str)>) -> Result<T, StatusCode>
+pub async fn get<T>(
+    url: String,
+    header: Option<(&str, &str)>,
+    basic: Option<(&str, &str)>,
+) -> Result<T, StatusCode>
 where
     T: DeserializeOwned,
 {
@@ -12,6 +16,10 @@ where
 
     if let Some((k, v)) = header {
         call = call.header(k, v)
+    }
+
+    if let Some((user, pass)) = basic {
+        call = call.basic_auth(user, Some(pass))
     }
 
     let resp = call.send().await;

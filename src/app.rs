@@ -1,6 +1,10 @@
 use super::config::Config;
 use super::user_config::UserConfig;
-use crate::clients::shodan::{Location, ServiceData, ShodanSearchIp};
+use crate::clients::censys::{
+    AutonomousSystem, CensysSearchIp, Coordinates, Location as CensysLocation, OperatingSystem,
+    Result, Services,
+};
+use crate::clients::shodan::{Location as ShodanLocation, ServiceData, ShodanSearchIp};
 use crate::clients::virustotal::{
     AnalysisStats, CommentAttributes, CommentAuthor, CommentVotes, IpAddress, IpAttributes,
     IpCommentAttributes, IpCommentData, IpComments, IpData, Votes,
@@ -21,6 +25,8 @@ pub enum RouteId {
     Home,
     Search,
     SearchResult,
+    Censys,
+    CensysGeoLookup,
     Shodan,
     ShodanGeoLookup,
     VirustotalDetection,
@@ -51,6 +57,14 @@ pub struct Shodan {
     pub search_ip_items: ShodanSearchIp,
 }
 
+pub const CENSYS_MENU: [&str; 2] = ["Summary", "Geo-Lookup"];
+
+pub struct Censys {
+    pub service_index: usize,
+    pub menu_index: usize,
+    pub search_ip_items: CensysSearchIp,
+}
+
 pub struct ScanTable {
     pub selected_index: usize,
 }
@@ -69,6 +83,8 @@ pub enum ActiveBlock {
     SearchResult,
     Home,
     Input,
+    CensysMenu,
+    CensysUnloaded,
     ShodanMenu,
     ShodanUnloaded,
     ShodanServices,
@@ -98,8 +114,9 @@ pub struct App {
     pub input: Vec<char>,
     pub input_idx: usize,
     pub input_cursor_position: u16,
-    pub virustotal: Virustotal,
+    pub censys: Censys,
     pub shodan: Shodan,
+    pub virustotal: Virustotal,
     io_tx: Option<Sender<IoEvent>>,
 }
 
@@ -179,7 +196,7 @@ impl Default for App {
                         product: Some(String::new()),
                         transport: Some(String::new()),
                         port: 0,
-                        location: Some(Location {
+                        location: Some(ShodanLocation {
                             area_code: Some(0),
                             city: Some(String::new()),
                             country_code: Some(String::new()),
@@ -195,6 +212,54 @@ impl Default for App {
                     city: Some(String::new()),
                     country_code: Some(String::new()),
                     country_name: Some(String::new()),
+                },
+            },
+            censys: Censys {
+                service_index: 0,
+                menu_index: 0,
+                search_ip_items: CensysSearchIp {
+                    code: 0,
+                    status: String::new(),
+                    result: Result {
+                        ip: String::new(),
+                        location_update_at: Some(String::new()),
+                        autonomous_system_updated_at: String::new(),
+                        last_updated_at: String::new(),
+                        services: vec![Services {
+                            port: Some(0),
+                            service_name: Some(String::new()),
+                            transport_protocol: Some(String::new()),
+                            extended_service_name: Some(String::new()),
+                            certificate: Some(String::new()),
+                        }],
+                        location: CensysLocation {
+                            continent: Some(String::new()),
+                            country: Some(String::new()),
+                            country_code: Some(String::new()),
+                            postal_code: Some(String::new()),
+                            timezone: Some(String::new()),
+                            coordinates: Some(Coordinates {
+                                latitude: 0.000,
+                                longitude: 0.000,
+                            }),
+                            registered_country: Some(String::new()),
+                            registered_country_code: Some(String::new()),
+                        },
+                        autonomous_system: AutonomousSystem {
+                            asn: Some(0),
+                            description: Some(String::new()),
+                            bgp_prefix: Some(String::new()),
+                            name: Some(String::new()),
+                            country_code: Some(String::new()),
+                        },
+                        operating_sytem: Some(OperatingSystem {
+                            product: Some(String::new()),
+                            vendor: Some(String::new()),
+                            version: Some(String::new()),
+                            edition: Some(String::new()),
+                            uniform_resource_identifier: Some(String::new()),
+                        }),
+                    },
                 },
             },
             navigation_stack: vec![DEFAULT_ROUTE],

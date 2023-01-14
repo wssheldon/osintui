@@ -1,3 +1,4 @@
+mod censys;
 mod common_key_events;
 mod empty;
 mod error_screen;
@@ -29,6 +30,28 @@ pub fn handle_app(key: Key, app: &mut App) {
         _ if key == app.user_config.keys.search => {
             app.set_current_route_state(Some(ActiveBlock::Input), Some(ActiveBlock::Input));
         }
+        _ if key == app.user_config.keys.censys => {
+            if app.client_config.keys.censys_secret.is_empty() {
+                app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::CensysUnloaded);
+            } else {
+                // Reset the menu index with switching to the view
+                app.censys.menu_index = 0;
+
+                // Switch to the main Censys view
+                app.push_navigation_stack(RouteId::Censys, ActiveBlock::CensysMenu);
+            }
+        }
+        _ if key == app.user_config.keys.shodan => {
+            if app.client_config.keys.shodan.is_empty() {
+                app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::ShodanUnloaded);
+            } else {
+                // Reset the menu index with switching to the view
+                app.shodan.menu_index = 0;
+
+                // Switch to the main Shodan view
+                app.push_navigation_stack(RouteId::Shodan, ActiveBlock::ShodanMenu);
+            }
+        }
         _ if key == app.user_config.keys.virustotal => {
             if app.client_config.keys.virustotal.is_empty() {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::VirustotalUnloaded);
@@ -41,17 +64,6 @@ pub fn handle_app(key: Key, app: &mut App) {
                     RouteId::VirustotalDetection,
                     ActiveBlock::VirustotalMenu,
                 );
-            }
-        }
-        _ if key == app.user_config.keys.shodan => {
-            if app.client_config.keys.shodan.is_empty() {
-                app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::ShodanUnloaded);
-            } else {
-                // Reset the menu index with switching to the view
-                app.shodan.menu_index = 0;
-
-                // Switch to the main Shodan view
-                app.push_navigation_stack(RouteId::Shodan, ActiveBlock::ShodanMenu);
             }
         }
         _ => handle_block_events(key, app),
@@ -76,6 +88,12 @@ fn handle_block_events(key: Key, app: &mut App) {
         }
         ActiveBlock::SearchResult => {
             search_result::handler(key, app);
+        }
+        ActiveBlock::CensysMenu => {
+            censys::handler(key, app);
+        }
+        ActiveBlock::CensysUnloaded => {
+            unloaded::handler(key, app);
         }
         ActiveBlock::VirustotalMenu => {
             virustotal::handler(key, app);

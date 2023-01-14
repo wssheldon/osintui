@@ -48,6 +48,8 @@ osintui expects a TOML configuration file stored at `~/.osintui/config/config.to
 [keys]
 virustotal = "api_key"
 shodan = "api_key"
+censys_id = "api_id"
+censys_secret = "api_key"
 ```
 
 ## Hotkeys
@@ -57,8 +59,9 @@ shodan = "api_key"
 | h           | Home        |
 | /           | Input       |
 | q           | Back        |
+| c           | Censys      |
 | s           | Shodan      |
-| v           | VirusTotal   |
+| v           | Virustotal  |
 | →           | Move Right  |
 | ←           | Move Left   |
 | ↑           | Move Up     |
