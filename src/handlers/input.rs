@@ -104,6 +104,10 @@ fn process_input(app: &mut App, input: String) {
         app.is_input_error = true
     }
 
+    if !app.client_config.keys.censys_secret.is_empty() {
+        app.dispatch(IoEvent::Censys(ip.to_owned()));
+    }
+
     if !app.client_config.keys.shodan.is_empty() {
         app.dispatch(IoEvent::Shodan(ip.to_owned()));
     }

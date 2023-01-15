@@ -7,7 +7,7 @@ use crate::event::Key;
 pub fn handler(key: Key, app: &mut App) {
     let whois = app.virustotal.ip_whois_items.data.attributes.whois.clone();
     let results: String = match whois {
-        Some(items) => items.to_string(),
+        Some(items) => items,
         None => "No Whois data found.".to_string(),
     };
 

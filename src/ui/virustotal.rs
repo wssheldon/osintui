@@ -279,9 +279,9 @@ where
         )]));
 
         // Comments with new lines need to be split and handled as a new span per line
-        let lines = comment.attributes.text.split("\n").collect::<Vec<&str>>();
+        let lines = comment.attributes.text.split('\n').collect::<Vec<&str>>();
         for line in lines.iter() {
-            comments.push(Spans::from(vec![Span::raw(format!("{}", line))]));
+            comments.push(Spans::from(vec![Span::raw(line.to_string())]));
         }
 
         // Add a space between the end of a comment and a new date

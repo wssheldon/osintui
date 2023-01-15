@@ -18,6 +18,8 @@ pub struct Config {
 pub struct Keys {
     pub virustotal: String,
     pub shodan: String,
+    pub censys_id: String,
+    pub censys_secret: String,
 }
 
 pub struct ConfigPaths {
@@ -36,6 +38,8 @@ impl Config {
             keys: Keys {
                 virustotal: "".to_string(),
                 shodan: "".to_string(),
+                censys_id: "".to_string(),
+                censys_secret: "".to_string(),
             },
         }
     }
@@ -75,6 +79,8 @@ impl Config {
 
             self.keys.shodan = config_toml.keys.shodan;
             self.keys.virustotal = config_toml.keys.virustotal;
+            self.keys.censys_id = config_toml.keys.censys_id;
+            self.keys.censys_secret = config_toml.keys.censys_secret;
 
             Ok(())
         } else {

@@ -1,4 +1,4 @@
-use super::super::app::{ActiveBlock, App, SHODAN_MENU};
+use super::super::app::{ActiveBlock, App, CENSYS_MENU};
 use crate::ui::{
     draw_map, draw_selectable_list, draw_table, util::get_percentage_width, TableHeader,
     TableHeaderItem, TableItem,
@@ -12,7 +12,7 @@ use tui::{
     Frame,
 };
 
-pub fn draw_shodan<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+pub fn draw_censys<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
 {
@@ -29,19 +29,19 @@ where
         )
         .split(layout_chunk);
 
-    draw_shodan_menu(f, app, chunks[0]);
+    draw_censys_menu(f, app, chunks[0]);
     draw_summary(f, app, chunks[1]);
     draw_services(f, app, chunks[2]);
 }
 
-pub fn draw_shodan_menu<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+pub fn draw_censys_menu<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
 {
     let current_route = app.get_current_route();
     let highlight_state = (
-        current_route.active_block == ActiveBlock::ShodanMenu,
-        current_route.hovered_block == ActiveBlock::ShodanMenu,
+        current_route.active_block == ActiveBlock::CensysMenu,
+        current_route.hovered_block == ActiveBlock::CensysMenu,
     );
 
     draw_selectable_list(
@@ -49,41 +49,10 @@ where
         app,
         layout_chunk,
         "Menu",
-        &SHODAN_MENU,
+        &CENSYS_MENU,
         highlight_state,
-        Some(app.shodan.menu_index),
+        Some(app.censys.menu_index),
     );
-}
-
-pub fn draw_summary<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
-where
-    B: Backend,
-{
-    let shodan_items = &app.shodan.search_ip_items;
-    let summary_vec = shodan_items.summary_to_vec();
-
-    let rows = summary_vec.iter().map(|i| {
-        let cells = i.iter().map(|c| {
-            let x = c.clone();
-            Cell::from(x)
-        });
-        Row::new(cells)
-            .style(Style::default().add_modifier(Modifier::BOLD))
-            .bottom_margin(1)
-    });
-
-    let summary = Table::new(rows)
-        .header(Row::new(vec!["", ""]))
-        .block(
-            Block::default()
-                .borders(Borders::ALL)
-                .style(Style::default().fg(Color::White))
-                .title("🌐 General Information")
-                .border_type(BorderType::Plain),
-        )
-        .widths(&[Constraint::Length(20), Constraint::Percentage(100)]);
-
-    f.render_widget(summary, layout_chunk);
 }
 
 pub fn draw_services<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
@@ -109,26 +78,28 @@ where
 
     let current_route = app.get_current_route();
     let highlight_state = (
-        current_route.active_block == ActiveBlock::ShodanServices,
-        current_route.hovered_block == ActiveBlock::ShodanServices,
+        current_route.active_block == ActiveBlock::CensysServices,
+        current_route.hovered_block == ActiveBlock::CensysServices,
     );
 
     let items = &app
-        .shodan
+        .censys
         .search_ip_items
-        .data
-        .as_ref()
-        .unwrap()
+        .result
+        .services
         .iter()
         .map(|services| TableItem {
             format: vec![
-                services.port.to_string(),
-                match &services.transport {
-                    Some(transport) => transport.to_string(),
+                match &services.port {
+                    Some(port) => port.to_string(),
                     None => "N/A".to_string(),
                 },
-                match &services.product {
-                    Some(product) => product.to_string(),
+                match &services.transport_protocol {
+                    Some(transport_protocol) => transport_protocol.to_string(),
+                    None => "N/A".to_string(),
+                },
+                match &services.service_name {
+                    Some(service_name) => service_name.to_string(),
                     None => "N/A".to_string(),
                 },
             ],
@@ -141,31 +112,54 @@ where
         layout_chunk,
         ("Services", &header),
         items,
-        app.shodan.service_index,
+        app.censys.service_index,
         highlight_state,
     );
+}
+
+pub fn draw_summary<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+where
+    B: Backend,
+{
+    let censys_item = &app.censys.search_ip_items;
+    let summary_vec = censys_item.summary_to_vec();
+
+    let rows = summary_vec.iter().map(|i| {
+        let cells = i.iter().map(|c| {
+            let x = c.clone();
+            Cell::from(x)
+        });
+        Row::new(cells)
+            .style(Style::default().add_modifier(Modifier::BOLD))
+            .bottom_margin(1)
+    });
+
+    let summary = Table::new(rows)
+        .header(Row::new(vec!["", ""]))
+        .block(
+            Block::default()
+                .borders(Borders::ALL)
+                .style(Style::default().fg(Color::White))
+                .title("🌐 General Information")
+                .border_type(BorderType::Plain),
+        )
+        .widths(&[Constraint::Length(20), Constraint::Percentage(100)]);
+
+    f.render_widget(summary, layout_chunk);
 }
 
 pub fn draw_geo_info<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
 {
-    let items = &app.shodan.search_ip_items;
+    let items = &app.censys.search_ip_items;
 
     let text = vec![
         Spans::from(Span::styled(
-            format!("Lat: {}", &items.latitude),
-            Style::default().fg(app.user_config.theme.inactive),
-        )),
-        Spans::from(Span::styled(
-            format!("Lon: {}", &items.longitude),
-            Style::default().fg(app.user_config.theme.inactive),
-        )),
-        Spans::from(Span::styled(
             format!(
-                "City: {}",
-                match &items.city {
-                    Some(city) => city.to_string(),
+                "Lat: {}",
+                match &items.result.location.coordinates {
+                    Some(code) => code.latitude.to_string(),
                     None => "N/A".to_string(),
                 }
             ),
@@ -173,8 +167,28 @@ where
         )),
         Spans::from(Span::styled(
             format!(
-                "County: {}",
-                match &items.country_name {
+                "Lon: {}",
+                match &items.result.location.coordinates {
+                    Some(code) => code.longitude.to_string(),
+                    None => "N/A".to_string(),
+                }
+            ),
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+        Spans::from(Span::styled(
+            format!(
+                "Continent: {}",
+                match &items.result.location.continent {
+                    Some(continent) => continent.to_string(),
+                    None => "N/A".to_string(),
+                }
+            ),
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+        Spans::from(Span::styled(
+            format!(
+                "Continent: {}",
+                match &items.result.location.country {
                     Some(country) => country.to_string(),
                     None => "N/A".to_string(),
                 }
@@ -183,9 +197,19 @@ where
         )),
         Spans::from(Span::styled(
             format!(
-                "Code: {}",
-                match &items.country_code {
-                    Some(code) => code.to_string(),
+                "Postal Code: {}",
+                match &items.result.location.postal_code {
+                    Some(postal_code) => postal_code.to_string(),
+                    None => "N/A".to_string(),
+                }
+            ),
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+        Spans::from(Span::styled(
+            format!(
+                "Timezone: {}",
+                match &items.result.location.timezone {
+                    Some(timezone) => timezone.to_string(),
                     None => "N/A".to_string(),
                 }
             ),
@@ -207,7 +231,7 @@ where
     f.render_widget(paragraph, layout_chunk);
 }
 
-pub fn draw_shodan_geo_lookup<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+pub fn draw_censys_geo_lookup<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
 {
@@ -223,9 +247,9 @@ where
         )
         .split(layout_chunk);
 
-    let lon = app.shodan.search_ip_items.longitude;
-    let lat = app.shodan.search_ip_items.latitude;
-    draw_shodan_menu(f, app, chunks[0]);
+    draw_censys_menu(f, app, chunks[0]);
     draw_geo_info(f, app, chunks[1]);
-    draw_map(f, lat, lon, chunks[2]);
+    if let Some(coordinates) = &app.censys.search_ip_items.result.location.coordinates {
+        draw_map(f, coordinates.latitude, coordinates.longitude, chunks[2]);
+    }
 }

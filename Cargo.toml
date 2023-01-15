@@ -19,4 +19,3 @@ tokio = { version = "1.12.0", features = ["full"] }
 toml = "0.5"
 tui = { version = "0.14", default-features = false, features = ['crossterm', 'serde'] }
 unicode-width = "0.1.8"
-

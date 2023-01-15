@@ -1,12 +1,14 @@
 use crate::app::App;
-use crate::clients::{shodan, virustotal};
+use crate::clients::{censys, shodan, virustotal};
 use crate::config::Config;
 use anyhow::anyhow;
 use std::sync::Arc;
 use tokio::sync::Mutex;
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub enum IoEvent {
+    Censys(String),
     VirusTotal(String),
     VirustotalComments(String),
     VirustotalCommentAuthor(String),
@@ -15,22 +17,25 @@ pub enum IoEvent {
 
 #[derive(Clone)]
 pub struct Network<'a> {
-    pub vt_client: virustotal::Client,
+    pub censys_client: censys::Client,
     pub shodan_client: shodan::Client,
+    pub vt_client: virustotal::Client,
     pub client_config: Config,
     pub app: &'a Arc<Mutex<App>>,
 }
 
 impl<'a> Network<'a> {
     pub fn new(
-        vt_client: virustotal::Client,
+        censys_client: censys::Client,
         shodan_client: shodan::Client,
+        vt_client: virustotal::Client,
         client_config: Config,
         app: &'a Arc<Mutex<App>>,
     ) -> Self {
         Network {
-            vt_client,
+            censys_client,
             shodan_client,
+            vt_client,
             client_config,
             app,
         }
@@ -38,6 +43,12 @@ impl<'a> Network<'a> {
 
     pub async fn handle_network_event(&mut self, io_event: IoEvent) {
         match io_event {
+            IoEvent::Censys(query) => {
+                self.censys_search_ip(query).await;
+            }
+            IoEvent::Shodan(query) => {
+                self.shodan_search_ip(query).await;
+            }
             IoEvent::VirusTotal(query) => {
                 self.virustotal_get_ip_whois(query).await;
             }
@@ -46,9 +57,6 @@ impl<'a> Network<'a> {
             }
             IoEvent::VirustotalCommentAuthor(query) => {
                 self.virustotal_get_comment_author(query.clone()).await;
-            }
-            IoEvent::Shodan(query) => {
-                self.shodan_search_ip(query).await;
             }
         };
 
@@ -86,11 +94,7 @@ impl<'a> Network<'a> {
     }
 
     async fn virustotal_get_comment_author(&mut self, comment_id: String) {
-        match self
-            .vt_client
-            .get_comment_author(&comment_id.as_str())
-            .await
-        {
+        match self.vt_client.get_comment_author(comment_id.as_str()).await {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.comment_authors = resp;
@@ -106,6 +110,18 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.shodan.search_ip_items = resp;
+            }
+            Err(e) => {
+                self.handle_error(anyhow!(e)).await;
+            }
+        }
+    }
+
+    async fn censys_search_ip(&mut self, ip: String) {
+        match self.censys_client.search_ip(ip.as_str()).await {
+            Ok(resp) => {
+                let mut app = self.app.lock().await;
+                app.censys.search_ip_items = resp;
             }
             Err(e) => {
                 self.handle_error(anyhow!(e)).await;

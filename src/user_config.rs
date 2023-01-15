@@ -39,8 +39,9 @@ pub struct KeyBindings {
     pub home: Key,
     pub search: Key,
     pub submit: Key,
-    pub virustotal: Key,
+    pub censys: Key,
     pub shodan: Key,
+    pub virustotal: Key,
 }
 
 #[derive(Clone)]
@@ -62,10 +63,11 @@ impl UserConfig {
             keys: KeyBindings {
                 home: Key::Char('h'),
                 back: Key::Char('q'),
+                censys: Key::Char('c'),
                 search: Key::Char('/'),
                 submit: Key::Enter,
-                virustotal: Key::Char('v'),
                 shodan: Key::Char('s'),
+                virustotal: Key::Char('v'),
             },
             path_to_config: None,
         }

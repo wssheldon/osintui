@@ -59,6 +59,8 @@ pub fn handle_right_event(app: &mut App) {
             RouteId::Search => {
                 app.set_current_route_state(Some(ActiveBlock::Home), Some(ActiveBlock::Empty));
             }
+            RouteId::Censys => {}
+            RouteId::CensysGeoLookup => {}
             RouteId::VirustotalDetection => {}
             RouteId::VirustotalDetails => {}
             RouteId::VirustotalCommunity => {}

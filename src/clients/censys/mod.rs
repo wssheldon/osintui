@@ -1,6 +1,6 @@
 #![allow(clippy::module_inception)]
+mod censys;
 mod models;
-mod shodan;
 
+pub use censys::Client;
 pub use models::*;
-pub use shodan::*;
