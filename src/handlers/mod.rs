@@ -92,6 +92,9 @@ fn handle_block_events(key: Key, app: &mut App) {
         ActiveBlock::CensysMenu => {
             censys::handler(key, app);
         }
+        ActiveBlock::CensysServices => {
+            censys::handler(key, app);
+        }
         ActiveBlock::CensysUnloaded => {
             unloaded::handler(key, app);
         }

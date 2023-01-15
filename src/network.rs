@@ -6,6 +6,7 @@ use std::sync::Arc;
 use tokio::sync::Mutex;
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub enum IoEvent {
     Censys(String),
     VirusTotal(String),

@@ -84,6 +84,7 @@ pub enum ActiveBlock {
     Home,
     Input,
     CensysMenu,
+    CensysServices,
     CensysUnloaded,
     ShodanMenu,
     ShodanUnloaded,
@@ -253,7 +254,7 @@ impl Default for App {
                             country_code: Some(String::new()),
                         },
                         operating_sytem: Some(OperatingSystem {
-                            product: Some(String::new()),
+                            product: String::new(),
                             vendor: Some(String::new()),
                             version: Some(String::new()),
                             edition: Some(String::new()),

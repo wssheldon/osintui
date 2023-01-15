@@ -1,15 +1,13 @@
 use super::super::app::{ActiveBlock, App, SHODAN_MENU};
 use crate::ui::{
-    draw_selectable_list, draw_table, util::get_percentage_width, TableHeader, TableHeaderItem,
+    draw_selectable_list, draw_table, draw_map, util::get_percentage_width, TableHeader, TableHeaderItem,
     TableItem,
 };
 use tui::{
     backend::Backend,
     layout::{Constraint, Direction, Layout, Rect},
     style::{Color, Modifier, Style},
-    symbols,
     text::{Span, Spans},
-    widgets::canvas::{Canvas, Map, MapResolution},
     widgets::{Block, BorderType, Borders, Cell, Paragraph, Row, Table, Wrap},
     Frame,
 };
@@ -209,32 +207,6 @@ where
     f.render_widget(paragraph, layout_chunk);
 }
 
-pub fn draw_map<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
-where
-    B: Backend,
-{
-    let map = Canvas::default()
-        .block(Block::default().title("Geo Lookup").borders(Borders::ALL))
-        .paint(|ctx| {
-            ctx.draw(&Map {
-                color: Color::White,
-                resolution: MapResolution::High,
-            });
-            ctx.layer();
-            ctx.print(
-                app.shodan.search_ip_items.longitude,
-                app.shodan.search_ip_items.latitude,
-                "X",
-                Color::Red,
-            );
-        })
-        .marker(symbols::Marker::Braille)
-        .x_bounds([-180.0, 180.0])
-        .y_bounds([-90.0, 90.0]);
-
-    f.render_widget(map, layout_chunk);
-}
-
 pub fn draw_shodan_geo_lookup<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
@@ -251,7 +223,9 @@ where
         )
         .split(layout_chunk);
 
+    let lon = app.shodan.search_ip_items.longitude;
+    let lat = app.shodan.search_ip_items.latitude;
     draw_shodan_menu(f, app, chunks[0]);
     draw_geo_info(f, app, chunks[1]);
-    draw_map(f, app, chunks[2]);
+    draw_map(f, lat, lon, chunks[2]);
 }
