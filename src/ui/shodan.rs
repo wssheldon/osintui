@@ -1,7 +1,7 @@
 use super::super::app::{ActiveBlock, App, SHODAN_MENU};
 use crate::ui::{
-    draw_selectable_list, draw_table, draw_map, util::get_percentage_width, TableHeader, TableHeaderItem,
-    TableItem,
+    draw_map, draw_selectable_list, draw_table, util::get_percentage_width, TableHeader,
+    TableHeaderItem, TableItem,
 };
 use tui::{
     backend::Backend,
