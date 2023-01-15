@@ -1,3 +1,4 @@
+#![allow(clippy::single_match)]
 use super::{
     super::app::{ActiveBlock, App, RouteId, VIRUSTOTAL_MENU},
     common_key_events,

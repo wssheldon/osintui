@@ -94,11 +94,7 @@ impl<'a> Network<'a> {
     }
 
     async fn virustotal_get_comment_author(&mut self, comment_id: String) {
-        match self
-            .vt_client
-            .get_comment_author(&comment_id.as_str())
-            .await
-        {
+        match self.vt_client.get_comment_author(comment_id.as_str()).await {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.comment_authors = resp;

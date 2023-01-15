@@ -1,3 +1,4 @@
+#![allow(clippy::match_single_binding)]
 use super::common_key_events;
 use crate::{app::App, event::Key};
 
