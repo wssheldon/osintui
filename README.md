@@ -41,61 +41,10 @@ cargo install osintui
 ```
 
 ## Integrations
- <br />
-<div align="center", class="integrations">
-  <p>
-    <div class="card">
-      <a href="https://search.censys.io/"><img src="assets/logos/censys_logo.png" alt="censys" /></a>
-      <div class="container">
-        <h4><b>Censys</b></h4>
-      </div>
-    </div>
-  </p>
-    <br />
-  <p>
-    <div class="card">
-      <a href="https://www.virustotal.com/"><img src="assets/logos/virustotal_logo.png" alt="virustotal" /></a>
-      <div class="container">
-        <h4><b>Virustotal</b></h4>
-      </div>
-    </div>
-  </p>
-    <br />
-  <p>
-    <div class="card">
-      <a href="https://www.shodan.io/"><img src="assets/logos/shodan_logo.png" alt="shodan" /></a>
-      <div class="container">
-        <h4><b>Shodan</b></h4>
-      </div>
-    </div>
-  </p>
+
+<div align="center">
+    <img src="example.svg" width="400" height="400" alt="css-in-readme">
 </div>
-<br />
-
-<style type="text/css" rel="stylesheet">
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius: 20px; /* 5px rounded corners */
-  width: 100%;
-  padding-top: 10px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.container {
-  padding: 2px 16px;
-}
-
-.integrations {
-  display: flex;
-  grid-auto-flow: column;
-  grid-column-gap: 10px;
-}
-
-</style>
 
 ## Configuration
 

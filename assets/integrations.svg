@@ -1,0 +1,57 @@
+<svg fill="none" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <style type="text/css" rel="stylesheet">
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                border-radius: 20px; /* 5px rounded corners */
+                width: 100%;
+                padding-top: 10px;
+            }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+            .container {
+                padding: 2px 16px;
+            }
+
+            .integrations {
+                display: flex;
+                grid-auto-flow: column;
+                grid-column-gap: 10px;
+            }
+            </style>
+            <div align="center", class="integrations">
+                <p>
+                    <div class="card">
+                        <a href="https://search.censys.io/"><img src="logos/censys_logo.png" alt="censys" /></a>
+                        <div class="container">
+                            <h4><b>Censys</b></h4>
+                        </div>
+                    </div>
+                </p>
+                    <br />
+                <p>
+                    <div class="card">
+                        <a href="https://www.virustotal.com/"><img src="logos/virustotal_logo.png" alt="virustotal" /></a>
+                        <div class="container">
+                            <h4><b>Virustotal</b></h4>
+                        </div>
+                    </div>
+                </p>
+                    <br />
+                <p>
+                    <div class="card">
+                        <a href="https://www.shodan.io/"><img src="logos/shodan_logo.png" alt="shodan" /></a>
+                        <div class="container">
+                            <h4><b>Shodan</b></h4>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </foreignObject>
+</svg>
