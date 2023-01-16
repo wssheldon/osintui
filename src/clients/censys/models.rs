@@ -69,8 +69,22 @@ impl CensysSearchIp {
         vec![
             vec![String::from("IPv4"), self.result.ip.to_string()],
             vec![
+                String::from("Network"),
+                match &self.result.autonomous_system.name {
+                    Some(x) => x.to_string(),
+                    None => String::from("N/A"),
+                },
+            ],
+            vec![
                 String::from("ASN"),
                 match &self.result.autonomous_system.asn {
+                    Some(x) => x.to_string(),
+                    None => String::from("N/A"),
+                },
+            ],
+            vec![
+                String::from("Routing"),
+                match &self.result.autonomous_system.bgp_prefix {
                     Some(x) => x.to_string(),
                     None => String::from("N/A"),
                 },
