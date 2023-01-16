@@ -1,7 +1,8 @@
-use crate::app::App;
+use crate::app::{App, ResultStatus};
 use crate::clients::{censys, shodan, virustotal};
 use crate::config::Config;
 use anyhow::anyhow;
+use reqwest::StatusCode;
 use std::sync::Arc;
 use tokio::sync::Mutex;
 
@@ -74,9 +75,17 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.ip_whois_items = resp;
+                app.virustotal.status = ResultStatus::Found
             }
             Err(e) => {
-                self.handle_error(anyhow!(e)).await;
+                if e == StatusCode::NOT_FOUND {
+                    let mut app = self.app.lock().await;
+                    app.virustotal.status = ResultStatus::NotFound
+                } else {
+                    let mut app = self.app.lock().await;
+                    app.virustotal.status = ResultStatus::Error;
+                    self.handle_error(anyhow!(e)).await;
+                }
             }
         }
     }
@@ -86,9 +95,17 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.ip_comment_items = resp;
+                app.virustotal.status = ResultStatus::Found
             }
             Err(e) => {
-                self.handle_error(anyhow!(e)).await;
+                if e == StatusCode::NOT_FOUND {
+                    let mut app = self.app.lock().await;
+                    app.virustotal.status = ResultStatus::NotFound
+                } else {
+                    let mut app = self.app.lock().await;
+                    app.virustotal.status = ResultStatus::Error;
+                    self.handle_error(anyhow!(e)).await;
+                }
             }
         }
     }
@@ -98,9 +115,17 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.virustotal.comment_authors = resp;
+                app.virustotal.status = ResultStatus::Found
             }
             Err(e) => {
-                self.handle_error(anyhow!(e)).await;
+                if e == StatusCode::NOT_FOUND {
+                    let mut app = self.app.lock().await;
+                    app.virustotal.status = ResultStatus::NotFound
+                } else {
+                    let mut app = self.app.lock().await;
+                    app.virustotal.status = ResultStatus::Error;
+                    self.handle_error(anyhow!(e)).await;
+                }
             }
         }
     }
@@ -110,9 +135,17 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.shodan.search_ip_items = resp;
+                app.shodan.status = ResultStatus::Found
             }
             Err(e) => {
-                self.handle_error(anyhow!(e)).await;
+                if e == StatusCode::NOT_FOUND {
+                    let mut app = self.app.lock().await;
+                    app.shodan.status = ResultStatus::NotFound
+                } else {
+                    let mut app = self.app.lock().await;
+                    app.shodan.status = ResultStatus::Error;
+                    self.handle_error(anyhow!(e)).await;
+                }
             }
         }
     }
@@ -122,9 +155,17 @@ impl<'a> Network<'a> {
             Ok(resp) => {
                 let mut app = self.app.lock().await;
                 app.censys.search_ip_items = resp;
+                app.censys.status = ResultStatus::Found
             }
             Err(e) => {
-                self.handle_error(anyhow!(e)).await;
+                if e == StatusCode::NOT_FOUND {
+                    let mut app = self.app.lock().await;
+                    app.censys.status = ResultStatus::NotFound
+                } else {
+                    let mut app = self.app.lock().await;
+                    app.censys.status = ResultStatus::Error;
+                    self.handle_error(anyhow!(e)).await;
+                }
             }
         }
     }
