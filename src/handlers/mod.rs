@@ -35,9 +35,9 @@ pub fn handle_app(key: Key, app: &mut App) {
                 && app.client_config.keys.censys_id.is_empty()
             {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::CensysUnloaded);
-            } else if app.censys.status == ResultStatus::NotFound {
+            } else if matches!(app.censys.status, ResultStatus::NotFound) {
                 app.push_navigation_stack(RouteId::NotFound, ActiveBlock::CensysNotFound)
-            } else if app.censys.status == ResultStatus::NotQueried {
+            } else if matches!(app.censys.status, ResultStatus::NotQueried) {
                 app.push_navigation_stack(RouteId::NotQueried, ActiveBlock::CensysNotQueried)
             } else {
                 // Reset the menu index with switching to the view
@@ -50,9 +50,9 @@ pub fn handle_app(key: Key, app: &mut App) {
         _ if key == app.user_config.keys.shodan => {
             if app.client_config.keys.shodan.is_empty() {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::ShodanUnloaded);
-            } else if app.shodan.status == ResultStatus::NotFound {
+            } else if matches!(app.shodan.status, ResultStatus::NotFound) {
                 app.push_navigation_stack(RouteId::NotFound, ActiveBlock::ShodanNotFound)
-            } else if app.shodan.status == ResultStatus::NotQueried {
+            } else if matches!(app.shodan.status, ResultStatus::NotQueried) {
                 app.push_navigation_stack(RouteId::NotQueried, ActiveBlock::ShodanNotQueried)
             } else {
                 // Reset the menu index with switching to the view
@@ -65,9 +65,9 @@ pub fn handle_app(key: Key, app: &mut App) {
         _ if key == app.user_config.keys.virustotal => {
             if app.client_config.keys.virustotal.is_empty() {
                 app.push_navigation_stack(RouteId::Unloaded, ActiveBlock::VirustotalUnloaded);
-            } else if app.virustotal.status == ResultStatus::NotFound {
+            } else if matches!(app.virustotal.status, ResultStatus::NotFound) {
                 app.push_navigation_stack(RouteId::NotFound, ActiveBlock::VirustotalNotFound)
-            } else if app.virustotal.status == ResultStatus::NotQueried {
+            } else if matches!(app.virustotal.status, ResultStatus::NotQueried) {
                 app.push_navigation_stack(RouteId::NotQueried, ActiveBlock::VirustotalNotQueried)
             } else {
                 // Reset the menu index with switching to the view
