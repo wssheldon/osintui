@@ -108,11 +108,9 @@ pub enum ActiveBlock {
     VirustotalUnloaded,
 }
 
-#[derive(PartialEq)]
 pub enum ResultStatus {
     NotQueried,
     NotFound,
-    Error,
     Found,
 }
 
@@ -328,8 +326,6 @@ impl App {
         self.api_error = e.to_string();
     }
 
-    // The navigation_stack actually only controls the large block to the right of `library` and
-    // `playlists`
     pub fn push_navigation_stack(
         &mut self,
         next_route_id: RouteId,

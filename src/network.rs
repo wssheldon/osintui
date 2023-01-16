@@ -78,14 +78,7 @@ impl<'a> Network<'a> {
                 app.virustotal.status = ResultStatus::Found
             }
             Err(e) => {
-                if e == StatusCode::NOT_FOUND {
-                    let mut app = self.app.lock().await;
-                    app.virustotal.status = ResultStatus::NotFound
-                } else {
-                    let mut app = self.app.lock().await;
-                    app.virustotal.status = ResultStatus::Error;
-                    self.handle_error(anyhow!(e)).await;
-                }
+                self.process_error(e).await;
             }
         }
     }
@@ -98,14 +91,7 @@ impl<'a> Network<'a> {
                 app.virustotal.status = ResultStatus::Found
             }
             Err(e) => {
-                if e == StatusCode::NOT_FOUND {
-                    let mut app = self.app.lock().await;
-                    app.virustotal.status = ResultStatus::NotFound
-                } else {
-                    let mut app = self.app.lock().await;
-                    app.virustotal.status = ResultStatus::Error;
-                    self.handle_error(anyhow!(e)).await;
-                }
+                self.process_error(e).await;
             }
         }
     }
@@ -118,14 +104,7 @@ impl<'a> Network<'a> {
                 app.virustotal.status = ResultStatus::Found
             }
             Err(e) => {
-                if e == StatusCode::NOT_FOUND {
-                    let mut app = self.app.lock().await;
-                    app.virustotal.status = ResultStatus::NotFound
-                } else {
-                    let mut app = self.app.lock().await;
-                    app.virustotal.status = ResultStatus::Error;
-                    self.handle_error(anyhow!(e)).await;
-                }
+                self.process_error(e).await;
             }
         }
     }
@@ -138,14 +117,7 @@ impl<'a> Network<'a> {
                 app.shodan.status = ResultStatus::Found
             }
             Err(e) => {
-                if e == StatusCode::NOT_FOUND {
-                    let mut app = self.app.lock().await;
-                    app.shodan.status = ResultStatus::NotFound
-                } else {
-                    let mut app = self.app.lock().await;
-                    app.shodan.status = ResultStatus::Error;
-                    self.handle_error(anyhow!(e)).await;
-                }
+                self.process_error(e).await;
             }
         }
     }
@@ -158,15 +130,17 @@ impl<'a> Network<'a> {
                 app.censys.status = ResultStatus::Found
             }
             Err(e) => {
-                if e == StatusCode::NOT_FOUND {
-                    let mut app = self.app.lock().await;
-                    app.censys.status = ResultStatus::NotFound
-                } else {
-                    let mut app = self.app.lock().await;
-                    app.censys.status = ResultStatus::Error;
-                    self.handle_error(anyhow!(e)).await;
-                }
+                self.process_error(e).await;
             }
+        }
+    }
+
+    async fn process_error(&mut self, e: StatusCode) {
+        if matches!(e, StatusCode::NOT_FOUND) {
+            let mut app = self.app.lock().await;
+            app.censys.status = ResultStatus::NotFound
+        } else {
+            self.handle_error(anyhow!(e)).await;
         }
     }
 }
