@@ -32,20 +32,8 @@
 
 ----
 
-## Installation
-
-First, install [Rust](https://www.rust-lang.org/tools/install) (using the recommended rustup installation method) and then
-
-```
-cargo install osintui
-```
-
 ## Integrations
 
-<<<<<<< HEAD
-<div align="center">
-    <img src="assets/integrations.svg" alt="css-in-readme">
-=======
 <br>
 <div align="center">
   <p>
@@ -59,8 +47,15 @@ cargo install osintui
       <img src="assets/logos/virustotal_logo.png" alt="virustotal" />
     </a>
   </p>
->>>>>>> aa2c1fa (re-add integrations section)
 </div>
+
+## Installation
+
+First, install [Rust](https://www.rust-lang.org/tools/install) (using the recommended rustup installation method) and then
+
+```
+cargo install osintui
+```
 
 ## Configuration
 
