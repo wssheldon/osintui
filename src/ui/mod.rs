@@ -112,6 +112,12 @@ where
         RouteId::VirustotalCommunity => {
             draw_virustotal_community(f, app, chunks[0]);
         }
+        RouteId::NotFound => {
+            draw_not_found(f, app, chunks[0]);
+        }
+        RouteId::NotQueried => {
+            draw_not_queried(f, app, chunks[0]);
+        }
         RouteId::Unloaded => {
             draw_unloaded(f, app, chunks[0]);
         }
@@ -491,6 +497,71 @@ where
     f.render_widget(map, layout_chunk);
 }
 
+pub fn draw_not_found<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+where
+    B: Backend,
+{
+    let plugin = match app.get_current_route().active_block {
+        ActiveBlock::VirustotalNotFound => "Virustotal",
+        ActiveBlock::ShodanNotFound => "Shodan",
+        ActiveBlock::CensysNotFound => "Censys",
+        _ => "",
+    };
+
+    let text = vec![
+        Spans::from(Span::styled(
+            format!("\nNo results found on {}", plugin),
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+        Spans::from(Span::styled(
+            "\nPress <Esc> to return",
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+    ];
+
+    let paragraph = error_paragraph(
+        app.user_config.theme.text,
+        app.user_config.theme.error_border,
+        app.user_config.theme.error_border,
+        text,
+    );
+    f.render_widget(paragraph, layout_chunk);
+}
+
+pub fn draw_not_queried<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
+where
+    B: Backend,
+{
+    let plugin = match app.get_current_route().active_block {
+        ActiveBlock::VirustotalNotQueried => "Virustotal",
+        ActiveBlock::ShodanNotQueried => "Shodan",
+        ActiveBlock::CensysNotQueried => "Censys",
+        _ => "",
+    };
+
+    let text = vec![
+        Spans::from(Span::styled(
+            format!(
+                "\n{} has not been queried yet, press '/' to search for an IP.",
+                plugin
+            ),
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+        Spans::from(Span::styled(
+            "\nPress <Esc> to return",
+            Style::default().fg(app.user_config.theme.inactive),
+        )),
+    ];
+
+    let paragraph = error_paragraph(
+        app.user_config.theme.text,
+        app.user_config.theme.error_border,
+        app.user_config.theme.error_border,
+        text,
+    );
+    f.render_widget(paragraph, layout_chunk);
+}
+
 pub fn draw_unloaded<B>(f: &mut Frame<B>, app: &App, layout_chunk: Rect)
 where
     B: Backend,
@@ -513,17 +584,28 @@ where
         )),
     ];
 
-    let paragraph = Paragraph::new(text)
+    let paragraph = error_paragraph(
+        app.user_config.theme.text,
+        app.user_config.theme.error_border,
+        app.user_config.theme.error_border,
+        text,
+    );
+    f.render_widget(paragraph, layout_chunk);
+}
+
+pub fn error_paragraph(
+    para_style: Color,
+    title_style: Color,
+    border_style: Color,
+    text: Vec<Spans>,
+) -> Paragraph {
+    Paragraph::new(text)
         .wrap(Wrap { trim: true })
-        .style(Style::default().fg(app.user_config.theme.text))
+        .style(Style::default().fg(para_style))
         .block(
             Block::default()
                 .borders(Borders::ALL)
-                .title(Span::styled(
-                    "Error",
-                    Style::default().fg(app.user_config.theme.error_border),
-                ))
-                .border_style(Style::default().fg(app.user_config.theme.error_border)),
-        );
-    f.render_widget(paragraph, layout_chunk);
+                .title(Span::styled("Error", Style::default().fg(title_style)))
+                .border_style(Style::default().fg(border_style)),
+        )
 }

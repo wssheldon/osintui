@@ -33,12 +33,15 @@ pub enum RouteId {
     VirustotalDetails,
     VirustotalCommunity,
     Unloaded,
+    NotQueried,
+    NotFound,
     Error,
 }
 
 pub const VIRUSTOTAL_MENU: [&str; 3] = ["Detection", "Details", "Community"];
 
 pub struct Virustotal {
+    pub status: ResultStatus,
     pub selected_index: usize,
     pub analysis_result_index: usize,
     pub whois_result_index: usize,
@@ -52,6 +55,7 @@ pub struct Virustotal {
 pub const SHODAN_MENU: [&str; 2] = ["General", "Geo-Lookup"];
 
 pub struct Shodan {
+    pub status: ResultStatus,
     pub service_index: usize,
     pub menu_index: usize,
     pub search_ip_items: ShodanSearchIp,
@@ -60,6 +64,7 @@ pub struct Shodan {
 pub const CENSYS_MENU: [&str; 2] = ["Summary", "Geo-Lookup"];
 
 pub struct Censys {
+    pub status: ResultStatus,
     pub service_index: usize,
     pub menu_index: usize,
     pub search_ip_items: CensysSearchIp,
@@ -85,16 +90,30 @@ pub enum ActiveBlock {
     Input,
     CensysMenu,
     CensysServices,
+    CensysNotFound,
+    CensysNotQueried,
     CensysUnloaded,
     ShodanMenu,
-    ShodanUnloaded,
     ShodanServices,
+    ShodanNotFound,
+    ShodanNotQueried,
+    ShodanUnloaded,
     VirustotalMenu,
     VirustotalSummary,
     VirustotalResults,
     VirustotalWhois,
     VirustotalComments,
+    VirustotalNotFound,
+    VirustotalNotQueried,
     VirustotalUnloaded,
+}
+
+#[derive(PartialEq)]
+pub enum ResultStatus {
+    NotQueried,
+    NotFound,
+    Error,
+    Found,
 }
 
 pub struct App {
@@ -126,6 +145,7 @@ impl Default for App {
         App {
             api_error: String::new(),
             virustotal: Virustotal {
+                status: ResultStatus::NotQueried,
                 selected_index: 0,
                 analysis_result_index: 0,
                 whois_result_index: 0,
@@ -182,6 +202,7 @@ impl Default for App {
                 },
             },
             shodan: Shodan {
+                status: ResultStatus::NotQueried,
                 service_index: 0,
                 menu_index: 0,
                 search_ip_items: ShodanSearchIp {
@@ -216,6 +237,7 @@ impl Default for App {
                 },
             },
             censys: Censys {
+                status: ResultStatus::NotQueried,
                 service_index: 0,
                 menu_index: 0,
                 search_ip_items: CensysSearchIp {
@@ -223,9 +245,9 @@ impl Default for App {
                     status: String::new(),
                     result: Result {
                         ip: String::new(),
-                        location_update_at: Some(String::new()),
+                        location_updated_at: Some(String::new()),
                         autonomous_system_updated_at: String::new(),
-                        last_updated_at: String::new(),
+                        last_updated_at: Some(String::new()),
                         services: vec![Services {
                             port: Some(0),
                             service_name: Some(String::new()),

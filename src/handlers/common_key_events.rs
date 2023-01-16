@@ -68,6 +68,8 @@ pub fn handle_right_event(app: &mut App) {
             RouteId::Shodan => {}
             RouteId::ShodanGeoLookup => {}
             RouteId::Error => {}
+            RouteId::NotFound => {}
+            RouteId::NotQueried => {}
             RouteId::SearchResult => {}
         },
         _ => {}

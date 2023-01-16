@@ -10,9 +10,9 @@ pub struct CensysSearchIp {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Result {
     pub ip: String,
-    pub location_update_at: Option<String>,
+    pub location_updated_at: Option<String>,
     pub autonomous_system_updated_at: String,
-    pub last_updated_at: String,
+    pub last_updated_at: Option<String>,
     pub services: Vec<Services>,
     pub location: Location,
     pub autonomous_system: AutonomousSystem,
