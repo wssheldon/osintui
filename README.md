@@ -43,7 +43,7 @@ cargo install osintui
 ## Integrations
 
 <div align="center">
-    <img src="assets/integrations.gif" alt="css-in-readme">
+    <img src="assets/integrations.svg" alt="css-in-readme">
 </div>
 
 ## Configuration
