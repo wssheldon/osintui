@@ -32,6 +32,23 @@
 
 ----
 
+## Integrations
+
+<br>
+<div align="center">
+  <p>
+    <a href="https://shodan.io/">
+      <img src="assets/logos/shodan_logo.png" alt="shodan" />
+    </a>
+    <a href="https://censys.io/">
+      <img src="assets/logos/censys_logo.png" alt="censys" />
+    </a>
+    <a href="https://virustotal.com/">
+      <img src="assets/logos/virustotal_logo.png" alt="virustotal" />
+    </a>
+  </p>
+</div>
+
 ## Installation
 
 First, install [Rust](https://www.rust-lang.org/tools/install) (using the recommended rustup installation method) and then
