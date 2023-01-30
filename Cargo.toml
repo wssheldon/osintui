@@ -17,5 +17,5 @@ serde = {version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.12.0", features = ["full"] }
 toml = "0.7"
-tui = { version = "0.14", default-features = false, features = ['crossterm', 'serde'] }
+tui = { version = "0.19", default-features = false, features = ['crossterm', 'serde'] }
 unicode-width = "0.1.8"
