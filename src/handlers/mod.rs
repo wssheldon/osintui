@@ -100,20 +100,34 @@ fn handle_virustotal(app: &mut App) {
     }
 }
 
+// Handle event for the current active block
 fn handle_block_events(key: Key, app: &mut App) {
     let current_route = app.get_current_route();
     let active_block = current_route.active_block;
 
     match active_block {
+        // Input block
         ActiveBlock::Input => input::handler(key, app),
+
+        // Home block
         ActiveBlock::Home => home::handler(key, app),
+
+        // Empty block
         ActiveBlock::Empty => empty::handler(key, app),
+
+        // Error block
         ActiveBlock::Error => error_screen::handler(key, app),
+
+        // Search result block
         ActiveBlock::SearchResult => search_result::handler(key, app),
+
+        // Censys blocks
         ActiveBlock::CensysMenu | ActiveBlock::CensysServices => censys::handler(key, app),
         ActiveBlock::CensysNotFound
         | ActiveBlock::CensysNotQueried
         | ActiveBlock::CensysUnloaded => unloaded::handler(key, app),
+
+        // Virustotal blocks
         ActiveBlock::VirustotalMenu
         | ActiveBlock::VirustotalSummary
         | ActiveBlock::VirustotalResults
@@ -122,6 +136,8 @@ fn handle_block_events(key: Key, app: &mut App) {
         ActiveBlock::VirustotalNotFound
         | ActiveBlock::VirustotalNotQueried
         | ActiveBlock::VirustotalUnloaded => unloaded::handler(key, app),
+
+        // Shodan blocks
         ActiveBlock::ShodanMenu | ActiveBlock::ShodanServices => shodan::handler(key, app),
         ActiveBlock::ShodanNotQueried
         | ActiveBlock::ShodanNotFound
