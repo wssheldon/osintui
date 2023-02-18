@@ -67,34 +67,39 @@ pub struct OperatingSystem {
 impl CensysSearchIp {
     pub fn summary_to_vec(&self) -> Vec<Vec<String>> {
         vec![
-            vec![String::from("IPv4"), self.result.ip.to_string()],
+            vec!["IPv4".to_owned(), self.result.ip.to_string()],
             vec![
-                String::from("Network"),
-                match &self.result.autonomous_system.name {
-                    Some(x) => x.to_string(),
-                    None => String::from("N/A"),
-                },
+                "Network".to_owned(),
+                self.result
+                    .autonomous_system
+                    .name
+                    .as_deref()
+                    .unwrap_or("N/A")
+                    .to_owned(),
             ],
             vec![
-                String::from("ASN"),
-                match &self.result.autonomous_system.asn {
-                    Some(x) => x.to_string(),
-                    None => String::from("N/A"),
-                },
+                "ASN".to_owned(),
+                self.result
+                    .autonomous_system
+                    .asn
+                    .map(|x| x.to_string())
+                    .unwrap_or_else(|| "N/A".to_owned()),
             ],
             vec![
-                String::from("Routing"),
-                match &self.result.autonomous_system.bgp_prefix {
-                    Some(x) => x.to_string(),
-                    None => String::from("N/A"),
-                },
+                "Routing".to_owned(),
+                self.result
+                    .autonomous_system
+                    .bgp_prefix
+                    .as_deref()
+                    .unwrap_or("N/A")
+                    .to_owned(),
             ],
             vec![
-                String::from("Operating System"),
-                match &self.result.operating_sytem {
-                    Some(os) => os.product.to_string(),
-                    None => String::from("N/A"),
-                },
+                "Operating System".to_owned(),
+                self.result
+                    .operating_sytem
+                    .as_ref()
+                    .map_or_else(|| "N/A".to_owned(), |os| os.product.to_string()),
             ],
         ]
     }

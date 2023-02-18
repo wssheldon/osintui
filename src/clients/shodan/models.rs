@@ -45,34 +45,24 @@ impl ShodanSearchIp {
         vec![
             vec![
                 String::from("IPv4"),
-                match &self.ip_str {
-                    Some(x) => x.to_string(),
-                    None => String::from("N/A"),
-                },
+                self.ip_str.as_deref().unwrap_or("N/A").to_string(),
             ],
             vec![
                 String::from("Domains"),
-                match &self.domains {
-                    Some(x) => x.concat(),
-                    None => String::from("N/A"),
-                },
+                self.domains
+                    .as_ref()
+                    .map_or(String::from("N/A"), |x| x.concat()),
             ],
             vec![
                 String::from("City"),
-                match &self.city {
-                    Some(x) => x.to_string(),
-                    None => String::from("N/A"),
-                },
+                self.city.as_deref().unwrap_or("N/A").to_string(),
             ],
             vec![String::from("Organization"), self.org.to_string()],
             vec![String::from("ISP"), self.isp.to_string()],
             vec![String::from("ASN"), self.asn.to_string()],
             vec![
                 String::from("Operating System"),
-                match &self.os {
-                    Some(x) => x.to_string(),
-                    None => String::from("N/A"),
-                },
+                self.os.as_deref().unwrap_or("N/A").to_string(),
             ],
         ]
     }
