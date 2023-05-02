@@ -1,13 +1,9 @@
 use anyhow::{anyhow, Result};
 use serde::{Deserialize, Serialize};
-use std::{
-    fs,
-    path::{Path, PathBuf},
-};
+use std::{fs, path::PathBuf};
 
 const CONFIG_FILE: &str = "config.toml";
-const CONFIG_DIR: &str = ".osintui";
-const APP_CONFIG_DIR: &str = "config";
+const APP_CONFIG_DIR: &str = "osintui";
 
 #[derive(Deserialize, Serialize, Clone)]
 pub struct Config {
@@ -45,29 +41,23 @@ impl Config {
     }
 
     pub fn get_or_build_paths(&self) -> Result<ConfigPaths> {
-        match dirs::home_dir() {
-            Some(home) => {
-                let path = Path::new(&home);
-                let home_config_dir = path.join(CONFIG_DIR);
-                let app_config_dir = home_config_dir.join(APP_CONFIG_DIR);
-
-                if !home_config_dir.exists() {
-                    fs::create_dir(&home_config_dir)?;
-                }
+        match dirs::config_dir() {
+            Some(config_dir) => {
+                let app_config_dir = config_dir.join(APP_CONFIG_DIR);
 
                 if !app_config_dir.exists() {
-                    fs::create_dir(&app_config_dir)?;
+                    fs::create_dir_all(&app_config_dir)?;
                 }
 
-                let config_file_path = &app_config_dir.join(CONFIG_FILE);
+                let config_file_path = app_config_dir.join(CONFIG_FILE);
 
-                let paths = ConfigPaths {
-                    config_file_path: config_file_path.to_path_buf(),
-                };
+                let paths = ConfigPaths { config_file_path };
 
                 Ok(paths)
             }
-            None => Err(anyhow!("No $HOME directory found for client config")),
+            None => Err(anyhow!(
+                "No $XDG_CONFIG_HOME or $HOME directory found for client config"
+            )),
         }
     }
 
