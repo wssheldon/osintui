@@ -2,7 +2,7 @@ use super::super::app::{ActiveBlock, App, VIRUSTOTAL_MENU};
 use crate::clients::virustotal::AnalysisResult;
 use crate::ui::util::{get_color, get_percentage_width};
 use crate::ui::{draw_selectable_list, draw_table, TableHeader, TableHeaderItem, TableItem};
-use chrono::prelude::NaiveDateTime;
+use chrono::DateTime;
 use tui::{
     backend::Backend,
     layout::{Alignment, Constraint, Direction, Layout, Rect},
@@ -271,10 +271,10 @@ where
     let mut comments = Vec::new();
 
     for comment in app.virustotal.ip_comment_items.data.iter() {
-        // Conver from Epoch time to 1900-01-01 00:00:00 format
-        let date = NaiveDateTime::from_timestamp(comment.attributes.date.try_into().unwrap(), 0);
+        // Convert from Epoch time to 1900-01-01 00:00:00 format
+        let date = DateTime::from_timestamp(comment.attributes.date.try_into().unwrap(), 0);
         comments.push(Spans::from(vec![Span::styled(
-            format!("{}", date),
+            format!("{:?}", date),
             Style::default().add_modifier(Modifier::BOLD),
         )]));
 
