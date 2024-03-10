@@ -280,7 +280,6 @@ where
             ),
             Style::default().add_modifier(Modifier::BOLD),
         )]));
-        
 
         // Comments with new lines need to be split and handled as a new span per line
         let lines = comment.attributes.text.split('\n').collect::<Vec<&str>>();
