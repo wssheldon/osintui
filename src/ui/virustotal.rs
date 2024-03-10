@@ -274,9 +274,10 @@ where
         // Convert from Epoch time to 1900-01-01 00:00:00 format
         let date = DateTime::from_timestamp(comment.attributes.date.try_into().unwrap(), 0);
         comments.push(Spans::from(vec![Span::styled(
-            format!("{:?}", date),
+            format!("{}", date.expect("Unknown Date").format("%Y-%m-%d %H:%M:%S")),
             Style::default().add_modifier(Modifier::BOLD),
         )]));
+        
 
         // Comments with new lines need to be split and handled as a new span per line
         let lines = comment.attributes.text.split('\n').collect::<Vec<&str>>();
