@@ -9,7 +9,7 @@ edition = "2021"
 anyhow = "1.0.43"
 backtrace = "0.3.57"
 chrono = "0.4"
-crossterm = { version = "0.19", features = [ "serde" ] }
+crossterm = { version = "0.28", features = [ "serde" ] }
 dirs = "5.0.0"
 futures = "0.3"
 reqwest = { version = "0.12", features = ["json"] }
